@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
-const Attendee  = require('./Attendee')
+const { Attendee } = require('./Attendee')
 
 
 const eventSchema = new Schema({
