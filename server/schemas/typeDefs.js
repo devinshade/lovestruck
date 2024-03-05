@@ -7,6 +7,8 @@ const typeDefs = `
     }
 
     type Event {
+        _id: ID
+        couple: String
         location: String
         date: String
     }
@@ -18,6 +20,9 @@ const typeDefs = `
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addEvent(location: String!, date: String!): Event
+        addEvent(couple: String!, location: String!, date: String!): Event
+        login(email: String!, password: String!): Auth
     }
 `
+
+module.exports = typeDefs
