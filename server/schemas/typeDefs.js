@@ -6,11 +6,20 @@ const typeDefs = `
         email: String
     }
 
+    type Attendee {
+        name: String
+    }
+
     type Event {
         _id: ID
-        couple: String
+        hosts: String
         location: String
         date: String
+        attendees: [Attendee]
+    }
+
+    input AttendeeInput {
+        name: String
     }
 
     type Query {
@@ -21,6 +30,7 @@ const typeDefs = `
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addEvent(couple: String!, location: String!, date: String!): Event
+        rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
         login(email: String!, password: String!): Auth
     }
 `
