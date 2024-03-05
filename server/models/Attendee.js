@@ -15,4 +15,4 @@ const attendeeSchema = new Schema({
 
 const Attendee = model('Attendee', attendeeSchema);
 
-module.exports = Attendee;
+module.exports = { Attendee, attendeeSchema };
