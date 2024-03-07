@@ -18,16 +18,16 @@ const resolvers = {
 
             return events;
         },
-        event: async () => {
+        events: async () => {
             return await Event.find();
         }
     },
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
-            const token = signToken(user);
+            // const token = signToken(user);
 
-            return { token, user }
+            return { user }
         },
         addEvent: async (parent, args) => {
             const event = await Event.create(args)
@@ -81,7 +81,7 @@ const resolvers = {
         
             return event;
         },
-        allAttendees: async (parent, { eventId }) => {
+        getNumberOfAttendees: async (parent, { eventId }) => {
             const event = await Event.findById(eventId)
 
             if (!event) {
