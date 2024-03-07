@@ -12,5 +12,10 @@ const resolvers = {
 
             return { token, user }
         },
+        addEvent: async (parent, args) => {
+            const event = await Event.create(args)
+
+            return { event }
+        },
     }
 }
