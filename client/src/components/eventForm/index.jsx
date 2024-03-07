@@ -4,7 +4,8 @@ import './style.css';
 function Form() {
     // Create state variables for the fields in the form
     // We are also setting their initial values to an empty string
-    const [user, setUser] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [eventId, setEvent] = useState('');
     const [location, setLocation] = useState('');
     const [date, setDate] = useState('');
@@ -17,9 +18,11 @@ function Form() {
         const inputValue = target.value;
         
         // Based on the input type, we set the state of the event details
-        if (inputType === 'user') {
-            setUser(inputValue);
-        } else if (inputType === 'userId') {
+        if (inputType === 'firstName') {
+            setFirstName(inputValue);
+        } else if (inputType === 'lastName') {
+            setLastName(inputValue);
+        } else if (inputType === 'event') {
             setEvent(inputValue);
         } else if (inputType === 'location') {
             setLocation(inputValue);
@@ -36,14 +39,21 @@ function Form() {
     }
     return (
         <div className="container text-center">
-            <h1>Welcome {user}!</h1>
+            <h1>Welcome {firstName}!</h1>
             <form className="form" onSubmit={handleFormSubmit}>
                 <input
-                    value={user}
-                    name="user"
+                    value={firstName}
+                    name="firstName"
                     onChange={handleInputChange}
-                    type="user"
-                    placeholder='Preferred Name'
+                    type="firstName"
+                    placeholder='First Name'
+                />
+                <input
+                    value={lastName}
+                    name="lastName"
+                    onChange={handleInputChange}
+                    type="lastName"
+                    placeholder='Last Name'
                 />
                 <input 
                     value={eventId}
@@ -73,6 +83,7 @@ function Form() {
                     type='contactInfo'
                     placeholder='Contact Information'
                 />
+                <button type="submit">Create Event</button>
             </form>
         </div>
     )

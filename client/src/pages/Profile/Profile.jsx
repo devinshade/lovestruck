@@ -3,7 +3,7 @@ import React from 'react';
 import './Profile.css'
 
 const Profile = () => {
-  return (<section>
+  return (<section className='fullPage'>
     <div>Profile</div>
   </section>
   )
