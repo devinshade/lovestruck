@@ -37,6 +37,7 @@ const typeDefs = `
         addEvent(couple: String!, location: String!, date: String!): Event
         rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
+        removeAttendee(eventId: ID!, attendeeId: ID!): Event
         getNumberOfAttendees(eventId: ID!): Int
         login(email: String!, password: String!): Auth
     }
