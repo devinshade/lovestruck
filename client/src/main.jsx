@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './pages/Home/Home.jsx'
 import Events from './pages/Events/Events.jsx'
-import './index.css'
+import Profile from './pages/Profile/Profile.jsx'
+import './main.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/events",
         element: <Events/>
       },
+      {
+        path: "/profile",
+        element: <Profile/>
+      }
   // add additional pages as children
     ]
   }
