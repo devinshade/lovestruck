@@ -12,3 +12,5 @@ const StripeContainer = () => {
       </Elements>
     );
   };
+
+  export default StripeContainer;
