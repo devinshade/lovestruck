@@ -17,5 +17,18 @@ const resolvers = {
 
             return { event }
         },
+        rsvpEvent: async (parent, { eventId, attendee }) => {
+            const event = Event.findOneAndUpdate(eventId);
+
+            if (!event) {
+                throw new Error("Event not found")
+            }
+
+            event.attendees.push(attendee)
+
+            await event.save();
+
+            return event;
+        },
     }
 }
