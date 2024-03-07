@@ -40,6 +40,13 @@ const resolvers = {
             await event.save();
 
             return attendeeUpdate;
+        },
+        allAttendees: async (parent, { eventId }) => {
+            const event = await Event.findById(eventId)
+
+            const attendees = event.attendees.length;
+
+            return attendees;
         }
     }
 }
