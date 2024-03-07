@@ -3,7 +3,13 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        user: async (parent, args, context) => {
+            const user = await User.findById(context.user._id)
 
+            const events = await Event.find({ 'attendees.userId': context.user._id})
+
+            return events;
+        },
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -67,3 +73,5 @@ const resolvers = {
         }
     }
 }
+
+module.exports = resolvers
