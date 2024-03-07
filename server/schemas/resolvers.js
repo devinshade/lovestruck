@@ -6,7 +6,15 @@ const resolvers = {
         user: async (parent, args, context) => {
             const user = await User.findById(context.user._id)
 
+            if (!user) {
+                throw new Error('User not found')
+            }
+
             const events = await Event.find({ 'attendees.userId': context.user._id})
+
+            if (!events) {
+                throw new Error('Event not found');
+            }
 
             return events;
         },
@@ -41,6 +49,10 @@ const resolvers = {
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {
             const event = Event.findById(eventId);
+            
+            if (!event) {
+                throw new Error('Event not found');
+            }
 
             const updateAttendee = event.attendees.find(attendee => attendee._id.toString() === attendeeId);
 
@@ -50,8 +62,31 @@ const resolvers = {
 
             return attendeeUpdate;
         },
+        removeAttendee: async (parent, { eventId, attendeeId }) => {
+            const event = await Event.findById(eventId);
+        
+            if (!event) {
+                throw new Error('Event not found');
+            }
+
+            const indexToRemove = event.attendees.findIndex(attendee => attendee._id.toString() === attendeeId);
+        
+            if (indexToRemove === -1) {
+                throw new Error('Attendee not found in the event');
+            }
+
+            event.attendees.splice(indexToRemove, 1);
+        
+            await event.save();
+        
+            return event;
+        },
         allAttendees: async (parent, { eventId }) => {
             const event = await Event.findById(eventId)
+
+            if (!event) {
+                throw new Error('Event not found');
+            }
 
             const attendees = event.attendees.length;
 
