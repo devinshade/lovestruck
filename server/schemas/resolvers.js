@@ -30,5 +30,16 @@ const resolvers = {
 
             return event;
         },
+        updateAttendee: async (parents, { eventId, attendeeId, name }) => {
+            const event = Event.findById(eventId);
+
+            const updateAttendee = event.attendees.find(attendee => attendee._id.toString() === attendeeId);
+
+            updateAttendee.name = name;
+
+            await event.save();
+
+            return attendeeUpdate;
+        }
     }
 }
