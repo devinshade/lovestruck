@@ -10,6 +10,9 @@ const resolvers = {
 
             return events;
         },
+        event: async () => {
+            return await Event.find();
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
