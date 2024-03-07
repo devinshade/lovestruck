@@ -1,10 +1,11 @@
 // review Projects from tutor video
 import React from 'react'
+import Form from '../../components/eventForm';
 
 const Events = () => {
-  return (<>
-    <div style={{backgroundColor: '#E6EEF1', height: '100%'}}>Events</div>
-    </>)
+  return (<section className='fullPage'>
+    <Form />
+    </section>)
 }
 
 export default Events;

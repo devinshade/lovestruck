@@ -1,8 +1,10 @@
 import React from 'react'
 
+import './Home.css';
+
 const Home = () => {
 
-  return (<section>
+  return (<section className='fullPage'>
     <div>LoveStruck</div>
   </section>
   )

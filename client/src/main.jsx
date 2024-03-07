@@ -6,10 +6,13 @@ import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import './index.css'
+import Profile from './pages/Profile/Profile.jsx'
+import './main.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,9 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       },
+        path: "/profile",
+        element: <Profile/>
+      }
   // add additional pages as children
     ]
   }
