@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './pages/Home/Home.jsx'
 import Events from './pages/Events/Events.jsx'
-import './index.css'
+import Signup from './pages/Signup.jsx';
+import Login from './pages/Login.jsx';
+import Profile from './pages/Profile/Profile.jsx'
+import './main.css'
+import './GiftPot.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +27,18 @@ const router = createBrowserRouter([
         path: "/events",
         element: <Events/>
       },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/signup',
+        element: <Signup />
+      },
+      {
+        path: "/profile",
+        element: <Profile/>
+      }
   // add additional pages as children
     ]
   }
