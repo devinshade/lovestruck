@@ -22,7 +22,8 @@ const resolvers = {
             return events;
         },
         events: async () => {
-            return await Event.find();
+            const allEvents = await Event.find();
+            return allEvents;
         },
         getNumberOfAttendees: async (parent, { eventId }) => {
             const event = await Event.findById(eventId)

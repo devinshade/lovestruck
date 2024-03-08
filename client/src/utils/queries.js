@@ -16,3 +16,28 @@ export const NUMBER_OF_ATTENDEES = gql`
    getNumberOfAttendees(eventId: $eventId)
   }
 `
+
+export const USER = gql `
+  query User($firstName: String!, $lastName: String!) {
+    user {
+      _id: ID
+      firstName: String
+      lastName: String
+      email: String
+    } 
+  }
+`
+
+export const EVENT = gql`
+  query {
+    events {
+      _id
+      hosts
+      location
+      date
+      attendees {
+        name
+      }
+    }
+  }
+`
