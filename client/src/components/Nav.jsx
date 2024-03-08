@@ -26,20 +26,16 @@ const Nav = () => {
           <button className="custom-btn header-btns">Friends</button>
         </a>
         |
+        <a href="/signup">
+          <button className="custom-btn header-btns">Sign Up</button>
+        </a>
+        |
         <a href="/login">
-          <button className="custom-btn header-btns">Login</button>
+          <button className="custom-btn header-btns">Log In</button>
         </a>
       </nav>
     </header>
-    // <nav>
-    //     <ul>
-    //         <li><Link to="/">Home</Link></li>
-    //         |
-    //         <li><Link to="/events">Events</Link></li>
-    //         |
-    //         <li><Link to="/profile">My Profile</Link></li>
-    //     </ul>
-    // </nav>
+
   )
 }
 
