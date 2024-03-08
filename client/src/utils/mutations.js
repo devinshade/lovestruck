@@ -31,8 +31,20 @@ export const ADD_EVENT = gql `
       hosts: String
       location: String
       date: String
-      attendees: {
-        name: String
-      }
+      attendee: [Attendees] // not sure about this yet
     }
+`
+
+export const RSVP_EVENT = gql `
+mutation RSVP_EVENT($eventId: ID!, $attendee: AttendeeInput!) {
+  rsvpEvent(eventId: $eventId, attendee: $attendee) {
+    _id
+    hosts
+    location
+    date
+    attendees {
+      name
+    }
+  }
+}
 `
