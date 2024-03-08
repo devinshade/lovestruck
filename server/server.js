@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
+const stripe = require('stripe')(pk_test_51OrsCMHiPcL6rzSyxeBOkMM8uBSH1OYDboOpESNDd504L2gB1VBaHw3yMJ9nEQmX9NZuOQLhJnkXNN3s5WbMWo5p007WtoYLOd);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
