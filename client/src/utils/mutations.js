@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_EVENT = gql `
+export const ADD_EVENT = gql`
   mutation addEvent($hosts: String, $location: String!, $date: String!, $attendees: AttendeeInput!)
     addEvent(input: AttendeeInput) {
       _id: ID
@@ -35,9 +35,23 @@ export const ADD_EVENT = gql `
     }
 `
 
-export const RSVP_EVENT = gql `
+export const RSVP_EVENT = gql`
 mutation RSVP_EVENT($eventId: ID!, $attendee: AttendeeInput!) {
   rsvpEvent(eventId: $eventId, attendee: $attendee) {
+    _id
+    hosts
+    location
+    date
+    attendees {
+      name
+    }
+  }
+}
+`
+
+export const REMOVE_ATTENDEE = gql `
+mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
+  removeAttendee(eventId: $eventId, attendeeId: $attendeeId) {
     _id
     hosts
     location
