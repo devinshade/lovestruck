@@ -18,7 +18,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-  app.post('/donate', async (req, res) => {
+app.post('/donate', async (req, res) => {
     try {
         const { amount, paymentMethodId } = req.body;
         const paymentIntent = await stripe.paymentIntents.create({
@@ -60,28 +60,5 @@ const startApolloServer = async () => {
         })
     })
 }
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/')))
-}
-
-app.post('/donate', async (req, res) => {
-    try {
-        const { amount, paymentMethodId } = req.body;
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount, // Amount should be in the smallest currency unit (e.g., cents)
-            currency: 'usd',
-            payment_method: paymentMethodId,
-            confirm: true,
-        });
-        res.json(paymentIntent);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 startApolloServer();
