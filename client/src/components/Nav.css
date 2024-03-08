@@ -1,20 +1,16 @@
-nav {
-  background-color: #c9aa88;
+header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--blue2);
   height: 8vh;
 }
 
-ul {
-  display: flex;
-  flex-flow: row wrap;
-  list-style-type: none;
-  position: relative;
-  
+nav {
+
 }
 
-li {
-  display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: xx-large;
+h1 a {
+    text-decoration: none;
+    color: var(--light);
 }
