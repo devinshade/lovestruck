@@ -8,6 +8,7 @@ import Login from './pages/Login.jsx';
 import './index.css'
 import Profile from './pages/Profile/Profile.jsx'
 import './main.css'
+import './GiftPot.css'
 import {
   createBrowserRouter,
   RouterProvider,
