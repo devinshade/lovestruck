@@ -7,22 +7,26 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
-function Signup(props) {
+const Signup = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+
+    try {
+      const { data } = await addUser(
+        {
+          variables: {
+            ...formState
+          },
+        }
+      );
+      const token = data.addUser.token;
+      Auth.login(token);
+    } catch (err) {
+      console.error(err)
+    }
   };
 
   const handleChange = (event) => {
