@@ -5,7 +5,6 @@ import Home from './pages/Home/Home.jsx'
 import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
-import './index.css'
 import Profile from './pages/Profile/Profile.jsx'
 import './main.css'
 import './GiftPot.css'
