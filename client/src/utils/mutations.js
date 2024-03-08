@@ -25,15 +25,18 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($hosts: String, $location: String!, $date: String!, $attendees: AttendeeInput!)
-    addEvent(input: AttendeeInput) {
-      _id: ID
-      hosts: String
-      location: String
-      date: String
-      attendee: [Attendees] // not sure about this yet
+  mutation addEvent($hosts: String, $location: String!, $date: String!, $attendees: [AttendeeInput]!) {
+    addEvent(input: { hosts: $hosts, location: $location, date: $date, attendees: $attendees }) {
+      _id
+      hosts
+      location
+      date
+      attendees {
+        name
+      }
     }
-`
+  }
+`;
 
 export const RSVP_EVENT = gql`
 mutation RSVP_EVENT($eventId: ID!, $attendee: AttendeeInput!) {
@@ -63,11 +66,11 @@ mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
 }
 `
 
-export const UPDATE_ATTENDEE = gql = `
-mutation UPDATE_ATTENDEE($eventId: ID!, $attendeeId: ID!, $name: String!) {
-  updateAttendee(eventId: $eventId, attendeeId: $attendeeId, name: $name) {
-    _id
-    name
+export const UPDATE_ATTENDEE = gql`
+  mutation UPDATE_ATTENDEE($eventId: ID!, $attendeeId: ID!, $name: String!) {
+    updateAttendee(eventId: $eventId, attendeeId: $attendeeId, name: $name) {
+      _id
+      name
+    }
   }
-}
-`
+`;
