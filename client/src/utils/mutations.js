@@ -23,3 +23,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_EVENT = gql `
+  mutation addEvent($hosts: String, $location: String!, $date: String!, $attendees: AttendeeInput!)
+    addEvent(input: AttendeeInput) {
+      _id: ID
+      hosts: String
+      location: String
+      date: String
+      attendees: {
+        name: String
+      }
+    }
+`
