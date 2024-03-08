@@ -62,3 +62,12 @@ mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
   }
 }
 `
+
+export const UPDATE_ATTENDEE = gql = `
+mutation UPDATE_ATTENDEE($eventId: ID!, $attendeeId: ID!, $name: String!) {
+  updateAttendee(eventId: $eventId, attendeeId: $attendeeId, name: $name) {
+    _id
+    name
+  }
+}
+`
