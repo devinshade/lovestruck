@@ -9,3 +9,35 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+
+export const NUMBER_OF_ATTENDEES = gql`
+  query GET_NUMBER_OF_ATTENDEES($eventId: ID!) {
+   getNumberOfAttendees(eventId: $eventId)
+  }
+`
+
+export const USER = gql `
+  query User($firstName: String!, $lastName: String!) {
+    user {
+      _id: ID
+      firstName: String
+      lastName: String
+      email: String
+    } 
+  }
+`
+
+export const EVENT = gql`
+  query {
+    events {
+      _id
+      hosts
+      location
+      date
+      attendees {
+        name
+      }
+    }
+  }
+`
