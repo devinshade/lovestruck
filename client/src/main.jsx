@@ -5,6 +5,7 @@ import Home from './pages/Home/Home.jsx'
 import Events from './pages/Events/Events.jsx'
 import Profile from './pages/Profile/Profile.jsx'
 import './main.css'
+import './GiftPot.css'
 import {
   createBrowserRouter,
   RouterProvider,

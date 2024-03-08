@@ -6,6 +6,7 @@ const Home = () => {
 
   return (<section className='fullPage'>
     <div>LoveStruck</div>
+    <div>Test</div>
   </section>
   )
 }
