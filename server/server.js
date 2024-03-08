@@ -5,10 +5,10 @@ const stripe = require('stripe')('pk_test_51OrsCMHiPcL6rzSyxeBOkMM8uBSH1OYDboOpE
 const { ApolloServer } = require('@apollo/server')
 const { expressMiddleware } = require('@apollo/server/express4')
 
-const { authMiddleware } = require('./utils/auth') // auth needs to be written still
+const { authMiddleware } = require('./utils/auth')
 
 const db = require('./config/connection');
-const { typeDefs, resolvers } = require('./schemas'); // typeDefs and resolvers need to be written and exported in those files
+const { typeDefs, resolvers } = require('./schemas');
 
 const PORT = process.env.PORT || 3001;
 
