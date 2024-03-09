@@ -11,7 +11,7 @@ function EventForm() {
     // We are also setting their initial values to an empty string
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [eventId, setEvent] = useState('');
+    const [event, setEvent] = useState('');
     const [location, setLocation] = useState('');
     const [date, setDate] = useState('');
     const [contactInfo , setContactInfo] = useState('');
@@ -74,7 +74,7 @@ function EventForm() {
                     <Form.Group className="mb-3" controlId="formGridEventName">
                         <Form.Label>Event Name</Form.Label>
                         <Form.Control
-                        value={eventId}
+                        value={event}
                         name='event'
                         onChange={handleInputChange}
                         type='text'

@@ -9,3 +9,28 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_EVENTS = gql`
+  query getEvents() {
+    events {
+      _id
+      hosts
+      description
+      date
+    }
+  }
+`;
+
+export const QUERY_SINGLE_EVENT = gql`
+  query getSingleEvent($eventtId: ID!)
+  event(eventId: $eventId) {
+    _id
+    hosts
+    description
+    location
+    date
+    attendees {
+      name
+    }
+  }
+`;

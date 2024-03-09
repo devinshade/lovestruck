@@ -10,6 +10,9 @@ const attendeeSchema = new Schema({
     eventId: {
         type: Schema.Types.ObjectId,
         ref: 'Event'
+    },
+    rsvp: {
+        type: Boolean
     }
 });
 
