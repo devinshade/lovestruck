@@ -36,7 +36,7 @@ const typeDefs = `
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addEvent(couple: String!, location: String!, date: String!): Event
+        addEvent(hosts: String!, location: String!, date: String!): Event
         rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event

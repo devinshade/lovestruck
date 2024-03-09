@@ -44,10 +44,10 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, args) => {
-            const event = await Event.create(args)
+        addEvent: async (parent, {hosts, date, location}) => {
+            const event = await Event.create({hosts, date, location})
 
-            return { event }
+            return event
         },
         rsvpEvent: async (parent, { eventId, attendee }) => {
             const event = Event.findOneAndUpdate(eventId);
