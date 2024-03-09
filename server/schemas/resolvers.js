@@ -44,8 +44,8 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, {hosts, date, location}) => {
-            const event = await Event.create({hosts, date, location})
+        addEvent: async (parent, {hosts, title, date, location}) => {
+            const event = await Event.create({hosts, title, date, location})
 
             return event
         },
