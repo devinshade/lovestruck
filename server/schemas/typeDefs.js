@@ -32,6 +32,7 @@ const typeDefs = `
         user: User
         events: [Event]
         getNumberOfAttendees(eventId: ID!): Int
+        getSingleEvent(eventId: ID!): Event
     }
 
     type Mutation {
