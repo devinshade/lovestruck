@@ -3,8 +3,8 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, {firstName, lastName }) => {
-            return User.findOne({firstName, lastName})
+        me: async (parent, args, context) => {
+            return User.findById(context.user._id)
         },
         user: async (parent, args, context) => {
             const user = await User.findById(context.user._id)
@@ -22,8 +22,20 @@ const resolvers = {
             return events;
         },
         events: async () => {
-            return await Event.find();
-        }
+            const allEvents = await Event.find();
+            return allEvents;
+        },
+        getNumberOfAttendees: async (parent, { eventId }) => {
+            const event = await Event.findById(eventId)
+
+            if (!event) {
+                throw new Error('Event not found');
+            }
+
+            const attendees = event.attendees.length;
+
+            return attendees;
+        },
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -83,17 +95,6 @@ const resolvers = {
             await event.save();
         
             return event;
-        },
-        getNumberOfAttendees: async (parent, { eventId }) => {
-            const event = await Event.findById(eventId)
-
-            if (!event) {
-                throw new Error('Event not found');
-            }
-
-            const attendees = event.attendees.length;
-
-            return attendees;
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });

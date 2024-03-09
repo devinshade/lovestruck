@@ -10,17 +10,6 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_EVENTS = gql`
-  query getEvents() {
-    events {
-      _id
-      hosts
-      description
-      date
-    }
-  }
-`;
-
 export const QUERY_SINGLE_EVENT = gql`
   query getSingleEvent($eventtId: ID!)
   event(eventId: $eventId) {
@@ -34,3 +23,34 @@ export const QUERY_SINGLE_EVENT = gql`
     }
   }
 `;
+
+export const NUMBER_OF_ATTENDEES = gql`
+  query GET_NUMBER_OF_ATTENDEES($eventId: ID!) {
+   getNumberOfAttendees(eventId: $eventId)
+  }
+`
+
+export const USER = gql `
+  query User($firstName: String!, $lastName: String!) {
+    user {
+      _id: ID
+      firstName: String
+      lastName: String
+      email: String
+    } 
+  }
+`
+
+export const EVENT = gql`
+  query {
+    events {
+      _id
+      hosts
+      location
+      date
+      attendees {
+        name
+      }
+    }
+  }
+`

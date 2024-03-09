@@ -31,6 +31,7 @@ const typeDefs = `
         me: User
         user: User
         events: [Event]
+        getNumberOfAttendees(eventId: ID!): Int
     }
 
     type Mutation {
@@ -39,7 +40,6 @@ const typeDefs = `
         rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event
-        getNumberOfAttendees(eventId: ID!): Int
         login(email: String!, password: String!): Auth
     }
 `
