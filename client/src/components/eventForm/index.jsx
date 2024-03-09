@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
+// test
+
 function EventForm() {
     // Create state variables for the fields in the form
     // We are also setting their initial values to an empty string
