@@ -18,8 +18,10 @@ const typeDefs = `
     type Event {
         _id: ID
         hosts: String
+        title: String
         location: String
         date: String
+        description: String
         attendees: [Attendee]
     }
 
@@ -37,7 +39,7 @@ const typeDefs = `
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addEvent(hosts: String!, location: String!, date: String!): Event
+        addEvent(hosts: String!, title: String!, location: String!, date: String!): Event
         rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event
