@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
+=======
+const { Schema, model } = require('mongoose');
+>>>>>>> 30cc404 (created the user model for now)
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
+<<<<<<< HEAD
         firstName: {
             type: String,
             required: true,
@@ -13,15 +18,31 @@ const userSchema = new Schema(
             required: true,
         },
         email: {
+=======
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+          },
+          email: {
+>>>>>>> 30cc404 (created the user model for now)
             type: String,
             required: true,
             unique: true,
             match: [/.+@.+\..+/, 'Must use a valid email address'],
+<<<<<<< HEAD
         },
         password: {
             type: String,
             required: true,
         },
+=======
+          },
+          password: {
+            type: String,
+            required: true,
+          },
+>>>>>>> 30cc404 (created the user model for now)
     },
     {
         toJSON: {
