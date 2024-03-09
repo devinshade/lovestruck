@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-// test
+// todo: reference the signup or login page to consolidate code below
 
 function EventForm() {
     // Create state variables for the fields in the form
@@ -83,6 +83,8 @@ function EventForm() {
                         placeholder='Event Name'
                         />
                     </Form.Group>
+
+                    {/* TODO: Add field for description */}
             
                     <Form.Group className="mb-3" controlId="formGridLocation">
                         <Form.Label>Location</Form.Label>

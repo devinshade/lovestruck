@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 const { Attendee } = require('./Attendee')
 
+// todo: Devin to add dateFormat - reference MERN activity 16
 
 const eventSchema = new Schema({
     hosts: {
