@@ -30,6 +30,7 @@ export const ADD_EVENT = gql`
     addEvent(hosts: $hosts, title: $title, location: $location, date: $date, attendees: $attendees) {
       _id
       hosts
+      title
       location
       date
       attendees {
