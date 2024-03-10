@@ -6,6 +6,7 @@ import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
+import Oops from './pages/Oops/oops.jsx';
 import './main.css'
 import './GiftPot.css'
 import {
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/events",
-        element: <Events/>
+        element: <Events />,
       },
+      // {
+      //   path: '/wedding',
+      //   element: <Wedding />
+      // },
       {
         path: '/login',
         element: <Login />
@@ -38,8 +43,11 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile/>
+      },
+      {
+        path: '/oops',
+        element: <Oops/>
       }
-  // add additional pages as children
     ]
   }
 ]);
