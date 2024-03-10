@@ -11,17 +11,33 @@ const Nav = () => {
         <a href="/">💗 LoveStruck 💗</a>
       </h1>
       <nav>
-        <a href="/events">
-          <button className="custom-btn header-btns">Events</button>
-        </a>
-        |
+      {Auth.loggedIn() ? (
+          <a href="/events" >
+            <button className="custom-btn header-btns">Events</button>
+          </a>
+        ) : (
+          <>
+          <a href="/oops">
+            <button className="custom-btn header-btns">Events</button>
+          </a>
+          </>
+        )},
+
         <a href="/">
           <button className="custom-btn header-btns">Calendar</button>
         </a>
         |
-        <a href="/">
-          <button className="custom-btn header-btns">My Wedding</button>
-        </a>
+        {Auth.loggedIn() ? (
+          <a href="/" >
+            <button className="custom-btn header-btns">My Wedding</button>
+          </a>
+        ) : (
+          <>
+          <a href="/oops">
+            <button className="custom-btn header-btns">My Wedding</button>
+          </a>
+          </>
+        )}
         |
         {Auth.loggedIn() ? (
           <a href="#" onClick={Auth.logout}>

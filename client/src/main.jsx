@@ -6,6 +6,7 @@ import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
+import Oops from './pages/Oops/oops.jsx';
 import './main.css'
 import './GiftPot.css'
 import {
@@ -26,22 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/events",
         element: <Events />,
-        action: () => {
-          const token = localStorage.getItem('id_token');
-          if (!token) {
-            window.location.href = '/login';
-          }
-        }
       },
       // {
       //   path: '/wedding',
-      //   element: <Wedding />,
-      //   action: () => {
-      //     const token = localStorage.getItem('id_token');
-      //     if (!token) {
-      //       window.location.href = '/login';
-      //     }
-      //   }
+      //   element: <Wedding />
       // },
       {
         path: '/login',
@@ -54,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile/>
+      },
+      {
+        path: '/oops',
+        element: <Oops/>
       }
     ]
   }
