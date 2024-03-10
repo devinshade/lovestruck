@@ -58,6 +58,15 @@ const resolvers = {
 
             return event
         },
+        deleteEvent: async (parent, { eventId }) => {
+            const event = await Event.deleteOne({ _id: eventId })
+
+            if (!event) {
+                throw new Error("Event not found")
+            }
+
+            return "Success!"
+        },
         rsvpEvent: async (parent, { eventId, attendee }) => {
             const event = await Event.findOneAndUpdate(eventId);
             

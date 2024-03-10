@@ -77,3 +77,11 @@ export const UPDATE_ATTENDEE = gql`
     }
   }
 `;
+
+export const DELETE_EVENT = gql `
+  mutation DELETE_EVENT($eventId: ID!) {
+    deleteEvent(eventId: $eventId) {
+      _id
+    }
+  }
+`
