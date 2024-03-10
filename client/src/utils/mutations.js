@@ -31,6 +31,7 @@ export const ADD_EVENT = gql`
       _id
       hosts
       title
+      description
       location
       date
       attendees {
