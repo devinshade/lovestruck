@@ -50,6 +50,7 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
+              <>
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -91,6 +92,10 @@ const Signup = () => {
                   Submit
                 </button>
               </form>
+              <div>
+                <a href="/Login">Login Instead</a>
+              </div>
+              </>
             )}
 
             {error && (
