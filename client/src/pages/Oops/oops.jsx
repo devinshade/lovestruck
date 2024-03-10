@@ -1,15 +1,19 @@
 import React from 'react';
 
-const Oops = () => {
-  return (<section className='fullPage'>
-    <div>
-        <h2>Oops! You need to be logged in!</h2>
+import "./oops.css";
 
-        <h3>
-            <a href="/login">Login</a> or <a href="/signup">Sign up</a>
+const Oops = () => {
+  return (
+    <section className='fullPage oops'>
+      <div>
+        <br />
+        <h2 className='msg'>Oops! You need to be logged in!</h2>
+        
+        <h3 className='links'>
+          <a className='button' href="/login">✨Login✨</a> or <a className='button' href="/signup">✨Sign up✨</a>
         </h3>
-    </div>
-  </section>
+      </div>
+    </section>
   )
 }
 
