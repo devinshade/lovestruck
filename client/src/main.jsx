@@ -33,16 +33,16 @@ const router = createBrowserRouter([
           }
         }
       },
-      {
-        path: '/wedding',
-        element: <Wedding />,
-        action: () => {
-          const token = localStorage.getItem('id_token');
-          if (!token) {
-            window.location.href = '/login';
-          }
-        }
-      },
+      // {
+      //   path: '/wedding',
+      //   element: <Wedding />,
+      //   action: () => {
+      //     const token = localStorage.getItem('id_token');
+      //     if (!token) {
+      //       window.location.href = '/login';
+      //     }
+      //   }
+      // },
       {
         path: '/login',
         element: <Login />
@@ -55,7 +55,6 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile/>
       }
-  // add additional pages as children
     ]
   }
 ]);
