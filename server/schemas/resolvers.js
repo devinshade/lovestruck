@@ -22,7 +22,7 @@ const resolvers = {
             return events;
         },
         events: async () => {
-            const allEvents = await Event.find();
+            const allEvents = await Event.find({}).populate('attendees');
             return allEvents;
         },
         getNumberOfAttendees: async (parent, { eventId }) => {
@@ -36,6 +36,15 @@ const resolvers = {
 
             return attendees;
         },
+        getSingleEvent: async (parents, { eventId }) => {
+            const singleEvent = await Event.findById(eventId)
+
+            if (!singleEvent) {
+                throw new Error ('Error not found')
+            }
+
+            return singleEvent;
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -44,22 +53,24 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, {hosts, title, date, location}) => {
-            const event = await Event.create({hosts, title, date, location})
+        addEvent: async (parent, {hosts, title, description, date, location}) => {
+            const event = await Event.create({hosts, title, description, date, location})
 
             return event
         },
         rsvpEvent: async (parent, { eventId, attendee }) => {
-            const event = Event.findOneAndUpdate(eventId);
-
+            const event = await Event.findOneAndUpdate(eventId);
+            
             if (!event) {
-                throw new Error("Event not found")
+                throw new Error("Event not found");
             }
-
-            event.attendees.push(attendee)
-
+            
+            const newAttendee = new Attendee({ name: attendee.name });
+            
+            event.attendees.push(newAttendee);
+            
             await event.save();
-
+            
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {
