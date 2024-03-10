@@ -50,16 +50,18 @@ const resolvers = {
             return event
         },
         rsvpEvent: async (parent, { eventId, attendee }) => {
-            const event = Event.findOneAndUpdate(eventId);
-
+            const event = await Event.findOneAndUpdate(eventId);
+            
             if (!event) {
-                throw new Error("Event not found")
+                throw new Error("Event not found");
             }
-
-            event.attendees.push(attendee)
-
+            
+            const newAttendee = new Attendee({ name: attendee.name });
+            
+            event.attendees.push(newAttendee);
+            
             await event.save();
-
+            
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {
