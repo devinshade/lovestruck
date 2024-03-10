@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
+import Signup from './Signup.jsx';
+
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -52,6 +54,7 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
+              <>
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -77,6 +80,11 @@ const Login = (props) => {
                   Submit
                 </button>
               </form>
+
+              <div>
+                <a href="/Signup">Sign Up Instead</a>
+              </div>
+              </>
             )}
 
             {error && (

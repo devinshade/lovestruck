@@ -23,20 +23,12 @@ const Nav = () => {
           <button className="custom-btn header-btns">My Wedding</button>
         </a>
         |
-        <a href="/">
-          <button className="custom-btn header-btns">Friends</button>
-        </a>
-        |
         {Auth.loggedIn() ? (
           <a href="#" onClick={Auth.logout}>
             <button className="custom-btn header-btns">Log Out</button>
           </a>
         ) : (
           <>
-          <a href="/signup">
-            <button className="custom-btn header-btns">Sign Up</button>
-          </a>
-          |
           <a href="/login">
             <button className="custom-btn header-btns">Log In</button>
           </a>
