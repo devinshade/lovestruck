@@ -12,6 +12,7 @@ const typeDefs = `
     }
 
     type Attendee {
+        _id: ID
         name: String
     }
 
@@ -26,6 +27,7 @@ const typeDefs = `
     }
 
     input AttendeeInput {
+        _id: ID
         name: String
     }
 
