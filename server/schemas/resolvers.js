@@ -22,7 +22,7 @@ const resolvers = {
             return events;
         },
         events: async () => {
-            const allEvents = await Event.find();
+            const allEvents = await Event.find({}).populate('attendees');
             return allEvents;
         },
         getNumberOfAttendees: async (parent, { eventId }) => {
@@ -36,6 +36,15 @@ const resolvers = {
 
             return attendees;
         },
+        getSingleEvent: async (parents, { eventId }) => {
+            const singleEvent = await Event.findById(eventId)
+
+            if (!singleEvent) {
+                throw new Error ('Error not found')
+            }
+
+            return singleEvent;
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
