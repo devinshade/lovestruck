@@ -25,7 +25,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/events",
-        element: <Events/>
+        element: <Events />,
+        action: () => {
+          const token = localStorage.getItem('id_token');
+          if (!token) {
+            window.location.href = '/login';
+          }
+        }
+      },
+      {
+        path: '/wedding',
+        element: <Wedding />,
+        action: () => {
+          const token = localStorage.getItem('id_token');
+          if (!token) {
+            window.location.href = '/login';
+          }
+        }
       },
       {
         path: '/login',
