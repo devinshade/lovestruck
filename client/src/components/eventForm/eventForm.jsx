@@ -9,8 +9,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-// ! todo: reference the signup or login page to consolidate code below
-
 const EventForm = (props) => {
     const [formState, setFormState] = useState({
         firstName: '',
