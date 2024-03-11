@@ -3,8 +3,9 @@ import React from 'react'
 import Form from '../../components/eventForm/eventForm';
 
 const Events = () => {
-  return (<section className='fullPage'>
-    <Form />
+  return (
+    <section className='fullPage'>
+      <Form />
     </section>)
 }
 

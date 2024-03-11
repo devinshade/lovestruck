@@ -1,3 +1,13 @@
 footer {
-  height: 2vh;
+  background-color: var(--blue2);
+  color: white;
+}
+
+h5 {
+  background-color: var(--blue2);
+}
+
+a:hover {
+  color: hotpink;
+  text-decoration: none;
 }
