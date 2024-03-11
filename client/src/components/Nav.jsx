@@ -21,8 +21,8 @@ const Nav = () => {
             <button className="custom-btn header-btns">Events</button>
           </a>
           </>
-        )},
-
+        )}
+        |
         <a href="/">
           <button className="custom-btn header-btns">Calendar</button>
         </a>
