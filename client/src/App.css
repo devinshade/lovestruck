@@ -1,4 +1,4 @@
 main {
-  background-color: #d3cab8;
+  background-color: var(--blue1);
   color: black;
 }
