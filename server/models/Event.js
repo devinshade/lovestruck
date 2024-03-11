@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
+const dateFormat = require('../utils/dateFormat')
 const { Attendee } = require('./Attendee')
 
 // todo: Devin to add dateFormat - reference MERN activity 16
+// if this is similar to handlebars - try implementing on the pages themselves
 
 const eventSchema = new Schema({
     hosts: {
@@ -18,6 +20,11 @@ const eventSchema = new Schema({
     description: {
         type: String
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
     location: {
         type: String,
         required: true,
