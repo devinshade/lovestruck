@@ -3,6 +3,9 @@
   background-color: var(--blue1);
 }
 
+.bg-pink {
+  background-color: hotpink;
+}
 /* 
 <div class="row justify-center">
   <div class="col-3 text-center" id="img-container">
