@@ -11,6 +11,33 @@ const Nav = () => {
         <a href="/">💗 LoveStruck 💗</a>
       </h1>
       <nav>
+        {Auth.loggedIn() ? (
+        <>
+          <a href="/events" >
+            <button className="custom-btn header-btns">Events</button>
+          </a>
+          |
+          <a href="/">
+            <button className="custom-btn header-btns">Calendar</button>
+          </a>
+          |
+          <a href="/" >
+            <button className="custom-btn header-btns">My Wedding</button>
+          </a>
+          |
+          <a href="#" onClick={Auth.logout}>
+            <button className="custom-btn header-btns">Log Out</button>
+          </a>
+        </>
+        ) : (
+        <>
+          <a href="/login">
+            <button className="custom-btn header-btns">Log In</button>
+          </a>
+        </>
+        )}
+      </nav>
+      {/* <nav>
       {Auth.loggedIn() ? (
           <a href="/events" >
             <button className="custom-btn header-btns">Events</button>
@@ -50,7 +77,7 @@ const Nav = () => {
           </a>
           </>
         )}
-      </nav>
+      </nav> */}
     </header>
   )
 }

@@ -1,13 +1,13 @@
 /*  * VARIABLES */ /* #region */
 :root {
-  --blue1: #95abe7;
-  --blue2: #6d99db;
-  --blue3: #4f6dd1;
-  --blue4: #384aaf;
-  --blue5: #1c3c77;
-  --blue6: #03023f;
-  --light: #cfe0fa;
-  --dark: #10111d;
+  --blue1: #95d7e7;
+  --blue2: #6dbcdb;
+  --blue3: #4fb3d1;
+  --blue4: #3889af;
+  --blue5: #1c5677;
+  --blue6: #02293f;
+  --light: #cff7fa;
+  --dark: #10141d;
   /* calendar */
   /* calendar lines */
   --fc-border-color: black;
