@@ -115,7 +115,7 @@ a:hover {
 
 /* #endregion */
 /*  * BTN */ /* #region */
-.btn {
+.custom-btn {
   border: 2px solid var(--dark);
   background-color: var(--blue5);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
@@ -124,7 +124,7 @@ a:hover {
   transition: filter 0.4s ease;
 }
 
-.btn:hover {
+.custom-btn:hover {
   background-color: var(--blue4);
   border: 2px solid var(--light);
 }

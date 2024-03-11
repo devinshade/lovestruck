@@ -14,15 +14,11 @@ const Nav = () => {
         {Auth.loggedIn() ? (
         <>
           <a href="/events" >
-            <button className="custom-btn header-btns">Events</button>
+            <button className="custom-btn header-btns">All Events</button>
           </a>
           |
-          <a href="/">
-            <button className="custom-btn header-btns">Calendar</button>
-          </a>
-          |
-          <a href="/" >
-            <button className="custom-btn header-btns">My Wedding</button>
+          <a href="/profile" >
+            <button className="custom-btn header-btns">My Profile</button>
           </a>
           |
           <a href="#" onClick={Auth.logout}>
@@ -37,47 +33,6 @@ const Nav = () => {
         </>
         )}
       </nav>
-      {/* <nav>
-      {Auth.loggedIn() ? (
-          <a href="/events" >
-            <button className="custom-btn header-btns">Events</button>
-          </a>
-        ) : (
-          <>
-          <a href="/oops">
-            <button className="custom-btn header-btns">Events</button>
-          </a>
-          </>
-        )}
-        |
-        <a href="/">
-          <button className="custom-btn header-btns">Calendar</button>
-        </a>
-        |
-        {Auth.loggedIn() ? (
-          <a href="/" >
-            <button className="custom-btn header-btns">My Wedding</button>
-          </a>
-        ) : (
-          <>
-          <a href="/oops">
-            <button className="custom-btn header-btns">My Wedding</button>
-          </a>
-          </>
-        )}
-        |
-        {Auth.loggedIn() ? (
-          <a href="#" onClick={Auth.logout}>
-            <button className="custom-btn header-btns">Log Out</button>
-          </a>
-        ) : (
-          <>
-          <a href="/login">
-            <button className="custom-btn header-btns">Log In</button>
-          </a>
-          </>
-        )}
-      </nav> */}
     </header>
   )
 }
