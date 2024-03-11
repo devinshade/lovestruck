@@ -2,4 +2,3 @@
 
 ## Description
 
-RSVP thing

@@ -4,9 +4,45 @@ import './Home.css';
 const Home = () => {
 
   return (
-    <section className='fullPage'>
-      <div>LoveStruck</div>
-      <div>Test</div>
+    <section className='fullPage container container-fluid mx-auto'>
+      <div className="row mb-4">
+        <div className="text-center var-text-light custom-border-lg custom-bg-blue3 custom-inline col-9 m-2">
+          <h1>Welcome to <span className='love-struck'>LoveStruck</span>!</h1>
+          <h2>Catchphrase goes here!</h2>
+        </div>
+        <div className="col-2 align-content-center" id="main-login-div">
+          <a href="/signup">
+            <button className="btn" id="main-login-btns">Sign Up</button>
+          </a>
+          <a href="/login">
+            <button className="btn" id="main-login-btns">Login</button>
+          </a>
+        </div>
+      </div>
+      <div className='row m-2'>
+        <div className="col-3 mx-2 custom-bg-light" id="img-container">
+          <img className="main-menu-img custom-border p-1" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
+        </div>
+        <div className="custom-border col-8 custom-bg-blue3 mx-2 p-4">
+          <h4 className="var-text-light custom-text-lg custom-underline">About us</h4>
+          <p className="var-text-light custom-text-md">
+            PLACEHOLDER TEXT FOR THE ABOUT US SECTION OF THE MAIN PAGE
+            GOES RIGHT HERE ON THE MAIN PAGE AND TALKS ABOUT US
+            </p>
+        </div>
+      </div>
+      <div className='row m-2'>
+        <div className="custom-border col-8 custom-bg-blue3 mx-2 p-4">
+          <h4 className="var-text-light custom-text-lg custom-underline">How it works</h4>
+          <p className="var-text-light custom-text-md">
+            PLACEHOLDER TEXT FOR THE HOW IT WORKS SECTION OF THE MAIN PAGE
+            GOES RIGHT HERE ON THE MAIN PAGE AND TALKS ABOUT HOW IT WORKS
+          </p>
+        </div>
+        <div className="col-3 mx-2  custom-bg-light" id="img-container">
+          <img className="main-menu-img custom-border p-1" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
+        </div>
+      </div>
     </section>
   )
 }
