@@ -31,7 +31,7 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5 className="text-uppercase">LinkedIn</h5>
                 <ul className="list-unstyled ">
-                    {/* <li><a href="" class="link-light">Lizzie Bumpers</a></li> */}
+                    <li><a href="https://www.linkedin.com/in/lizzie-bumpers-90ba122b4/" class="link-light">Lizzie Bumpers</a></li>
                     <li><a href="https://www.linkedin.com/in/lucas-babers-1aa0862ab/" class="link-light">Luke Babers</a></li>
                     {/* <li><a href="" class="link-light">Deborah Hariharan Margar</a></li> */}
                     <li><a href="https://www.linkedin.com/in/tyler-fruik/" class="link-light">Tyler Fruik</a></li>
