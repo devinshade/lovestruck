@@ -43,10 +43,14 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+    <main className="fullPage container container-fluid mx-auto pt-5">
+      <div className="row justify-center">
+        <div className="col-3 text-center" id="img-container">
+          <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
+          <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
+        </div>
+        <div className="card col-5">
+          <h4 className="card-header bg-dark text-light">Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -55,9 +59,9 @@ const Login = (props) => {
               </p>
             ) : (
               <>
-              <form onSubmit={handleFormSubmit}>
+              <form className='row p-5' onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className="form-input mt-5"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -65,7 +69,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="form-input my-5"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -86,13 +90,16 @@ const Login = (props) => {
               </div>
               </>
             )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
             )}
           </div>
+        </div>
+        <div className="col-3 text-center" id="img-container">
+          <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
+          <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
         </div>
       </div>
     </main>
