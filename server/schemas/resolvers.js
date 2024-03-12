@@ -51,19 +51,9 @@ const resolvers = {
             return singleEvent;
         },
         getRSVP: async (parents, { userId }, context) => {
-            const event = await Event.findOne({ 'attendees.userId': userId });
-
-            if (!event) {
-              throw new Error('Event not found');
-            }
-        
-            const attendee = event.attendees.find((attendee) => attendee.userId === userId);
-
-            if (!attendee) {
-              throw new Error('Attendee not found for this event');
-            }
-        
-            return attendee;
+            const user = await User.findById(userId).populate('events')
+            
+            return user
         }
     },
     Mutation: {
@@ -87,32 +77,29 @@ const resolvers = {
 
             return "Success!"
         },
-        rsvpEvent: async (parent, { eventId, userId, mainAttendee, plusOne }) => {
+        rsvpEvent: async (parent, { eventId, userId, attendee }) => {
             const event = await Event.findOneAndUpdate(eventId);
-        
+            
             if (!event) {
                 throw new Error("Event not found");
             }
         
-            const mainAttendeeRsvp = new Attendee({
+            const attendeeRsvp = new Attendee({
                 userId: userId,
-                name: mainAttendee.name
+                firstName: attendee.firstName,
+                lastName: attendee.lastName
             });
-        
-            if (plusOne) {
-                const plusOneRsvp = new Attendee({
-                    name: plusOne.name
-                });
-        
-                event.attendees.push(plusOneRsvp);
+            
+            if (!Array.isArray(event.attendees)) {
+                event.attendees = [];
             }
-        
-            event.attendees.push(mainAttendeeRsvp);
+
+            event.attendees.push(attendeeRsvp);
         
             await event.save();
 
             await User.findByIdAndUpdate(userId, { $push: { events: eventId } })
-        
+
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {

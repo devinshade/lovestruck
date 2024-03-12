@@ -49,8 +49,8 @@ const Login = (props) => {
           <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
           <img className="login-img custom-border" src="/src/assets/images/Placeholder.png" alt="PLACEHOLDER"/>
         </div>
-        <div className="card col-5">
-          <h4 className="card-header bg-dark text-light">Login</h4>
+        <div className="card col-5 custom-bg-light">
+          <h4 className="card-header text-center custom-bg-blue5 var-text-light custom-text-lg p-3 mt-3">Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -61,7 +61,7 @@ const Login = (props) => {
               <>
               <form className='row p-5' onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input mt-5"
+                  className="form-input"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -76,17 +76,23 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+                <div className='text-center'>
+                  <button
+                    className="custom-btn p-3 px-5 custom-text-md"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
 
-              <div>
-                <a href="/Signup">Sign Up Instead</a>
+              <div className='text-center'>
+                <a className='var-text-blue3 custom-text-md' href="/Signup">
+                  First time? <br />
+                  Click here to <br />
+                  Sign Up instead! <br />
+                  </a>
               </div>
               </>
             )}

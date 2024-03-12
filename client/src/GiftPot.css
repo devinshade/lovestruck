@@ -45,6 +45,14 @@ body {
   color: var(--light);
 }
 
+button {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 a:hover {
   text-decoration: none;
   color: var(--blue6);
@@ -122,6 +130,7 @@ a:hover {
   color: var(--light);
   cursor: pointer;
   transition: filter 0.4s ease;
+  border-radius: 10px;
 }
 
 .custom-btn:hover {

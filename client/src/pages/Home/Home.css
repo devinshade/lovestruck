@@ -1,8 +1,4 @@
 .love-struck {
   color: var(--light);
-  text-shadow: 1px 1px 1px var(--blue4);
-}
-
-.home-login-btns {
-  
+  text-shadow: 2px 2px 4px var(--blue4);
 }

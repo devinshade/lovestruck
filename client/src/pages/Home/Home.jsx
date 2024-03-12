@@ -5,17 +5,17 @@ const Home = () => {
 
   return (
     <section className='fullPage container container-fluid mx-auto'>
-      <div className="row mb-4">
+      <div className="row mb-4 mx-2 pt-4">
         <div className="text-center var-text-light custom-border-lg custom-bg-blue3 custom-inline col-9 m-2">
           <h1>Welcome to <span className='love-struck'>LoveStruck</span>!</h1>
           <h2>Catchphrase goes here!</h2>
         </div>
-        <div className="col-2 align-content-center" id="main-login-div">
-          <a href="/signup">
-            <button className="btn" id="main-login-btns">Sign Up</button>
+        <div className="col-2 align-content-center mx-2" id="main-login-div">
+          <a className='text-decoration-none' href="/signup">
+            <button className="custom-btn" id="main-login-btns">Sign Up</button>
           </a>
-          <a href="/login">
-            <button className="btn" id="main-login-btns">Login</button>
+          <a className='text-decoration-none' href="/login">
+            <button className="custom-btn " id="main-login-btns">Login</button>
           </a>
         </div>
       </div>
