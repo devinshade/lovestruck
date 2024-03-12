@@ -42,8 +42,8 @@ mutation AddEvent($hosts: String!, $title: String!, $location: String!, $date: S
 `;
 
 export const RSVP_EVENT = gql`
-mutation RsvpEvent($eventId: ID!, $userId: ID!, $attendee: Attendeeinput!) {
-  rsvpEvent(eventId: $eventId, userId: $userId, attendee: $attendee) {
+mutation RsvpEvent($eventId: ID!, $userId: ID!, $mainAttendee: AttendeeDetails!) {
+  rsvpEvent(eventId: $eventId, userId: $userId, mainAttendee: $mainAttendee) {
     _id
     hosts
     location

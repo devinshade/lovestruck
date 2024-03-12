@@ -2,6 +2,17 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 const Event = require('./Event')
 
+const plusOneSchema = new Schema({
+    firstName: {
+        type: String,
+        required: false
+    },
+    lastName: {
+        type: String,
+        required: false
+    },
+})
+
 const attendeeSchema = new Schema({
     userId: [
         {
@@ -24,11 +35,10 @@ const attendeeSchema = new Schema({
     rsvp: {
         type: Boolean
     },
-    // plusOne: {
-    //     required: false,
-    //     type: plusOneSchema
-    // }
-    // this is if I can get it working by class time
+    plusOne: {
+        required: false,
+        type: plusOneSchema
+    },
 });
 
 const Attendee = model('Attendee', attendeeSchema);

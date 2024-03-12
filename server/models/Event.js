@@ -46,7 +46,7 @@ const eventSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Attendee'
         }
-    ]
+    ],
 })
 
 const Event = mongoose.model('Event', eventSchema)

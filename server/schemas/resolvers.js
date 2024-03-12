@@ -77,29 +77,32 @@ const resolvers = {
 
             return "Success!"
         },
-        rsvpEvent: async (parent, { eventId, userId, attendee }) => {
-            const event = await Event.findOneAndUpdate(eventId);
-            
+        rsvpEvent: async (parent, { eventId, mainAttendee, plusOne }, context) => {
+            const event = await Event.findById(eventId).populate('attendees');
+            console.log(eventId, mainAttendee, plusOne)
             if (!event) {
                 throw new Error("Event not found");
             }
-        
-            const attendeeRsvp = new Attendee({
-                userId: userId,
-                firstName: attendee.firstName,
-                lastName: attendee.lastName
+
+            const mainAttendeeRsvp = new Attendee({
+                userId: context.user._id,
+                firstName: mainAttendee.firstName,
+                lastName: mainAttendee.lastName,
+                
+                plusOne: plusOne ? {
+                    firstName: plusOne.firstName,
+                    lastName: plusOne.lastName
+                } : null
             });
-            
-            if (!Array.isArray(event.attendees)) {
-                event.attendees = [];
-            }
+            console.log(mainAttendeeRsvp)
+            event.attendees.push(mainAttendeeRsvp);
 
-            event.attendees.push(attendeeRsvp);
-        
             await event.save();
+            
+            console.log(event)
 
-            await User.findByIdAndUpdate(userId, { $push: { events: eventId } })
-
+            await User.findByIdAndUpdate(context.user._id, { $push: { events: eventId } })
+        
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {
