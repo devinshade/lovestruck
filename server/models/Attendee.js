@@ -3,6 +3,12 @@ const { Schema, model } = mongoose;
 const Event = require('./Event')
 
 const attendeeSchema = new Schema({
+    userId: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     firstName: {
         type: String,
         required: true
@@ -17,7 +23,12 @@ const attendeeSchema = new Schema({
     },
     rsvp: {
         type: Boolean
-    }
+    },
+    // plusOne: {
+    //     required: false,
+    //     type: plusOneSchema
+    // }
+    // this is if I can get it working by class time
 });
 
 const Attendee = model('Attendee', attendeeSchema);
