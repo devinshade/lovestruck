@@ -26,24 +26,24 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($hosts: String!, $title: String!, $location: String!, $date: String!, $attendees: [AttendeeInput]!) {
-    addEvent(hosts: $hosts, title: $title, location: $location, date: $date, attendees: $attendees) {
+mutation AddEvent($hosts: String!, $title: String!, $location: String!, $date: String!, $contactInfo: String!) {
+  addEvent(hosts: $hosts, title: $title, location: $location, date: $date, contactInfo: $contactInfo) {
+    hosts
+    title
+    location
+    date
+    contactInfo
+    attendees {
       _id
-      hosts
-      title
-      description
-      location
-      date
-      attendees {
-        name
-      }
+      name
     }
   }
+}
 `;
 
 export const RSVP_EVENT = gql`
-mutation RSVP_EVENT($eventId: ID!, $attendee: AttendeeInput!) {
-  rsvpEvent(eventId: $eventId, attendee: $attendee) {
+mutation RsvpEvent($eventId: ID!, $userId: ID!, $mainAttendee: AttendeeDetails!) {
+  rsvpEvent(eventId: $eventId, userId: $userId, mainAttendee: $mainAttendee) {
     _id
     hosts
     location
