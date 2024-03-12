@@ -55,7 +55,7 @@ const Signup = () => {
               </p>
             ) : (
               <>
-              <form className='row p-5' onSubmit={handleFormSubmit}>
+              <form className='row p-5 ' onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
                   placeholder="First Name"
@@ -100,7 +100,7 @@ const Signup = () => {
               </form>
 
               <div className='text-center'>
-                <a className='var-text-blue3 custom-text-md' href="/Signup">
+                <a className='var-text-blue3 custom-text-md' href="/Login">
                   Already have an account? <br />
                   Click here to <br />
                   Login instead! <br />
