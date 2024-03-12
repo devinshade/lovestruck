@@ -1,13 +1,17 @@
 footer {
   background-color: var(--blue2);
-  color: white;
+  color: var(--blue2);
 }
 
 h5 {
   background-color: var(--blue2);
 }
 
-a:hover {
-  color: hotpink;
+.footer-link {
   text-decoration: none;
+  color: var(--light);
+}
+
+.footer-link:hover {
+  color: hotpink;
 }
