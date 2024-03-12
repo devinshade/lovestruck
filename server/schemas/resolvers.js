@@ -7,19 +7,24 @@ const resolvers = {
             return User.findById(context.user._id)
         },
         user: async (parent, args, context) => {
-            const user = await User.findById(context.user._id)
+            const user = await User.findById(context.user._id).populate('events')
 
             if (!user) {
                 throw new Error('User not found')
             }
-
-            const events = await Event.find({ 'attendees.userId': context.user._id})
-
+            
+            const events = await Event.find({ 'attendees.userId': context.user._id });
+            
             if (!events) {
                 throw new Error('Event not found');
             }
+            
+            console.log("events:", user.events)
 
-            return events;
+            return {
+                user, 
+                events
+            };
         },
         events: async () => {
             const allEvents = await Event.find({}).populate('attendees');
@@ -44,6 +49,21 @@ const resolvers = {
             }
 
             return singleEvent;
+        },
+        getRSVP: async (parents, { userId }, context) => {
+            const event = await Event.findOne({ 'attendees.userId': userId });
+
+            if (!event) {
+              throw new Error('Event not found');
+            }
+        
+            const attendee = event.attendees.find((attendee) => attendee.userId === userId);
+
+            if (!attendee) {
+              throw new Error('Attendee not found for this event');
+            }
+        
+            return attendee;
         }
     },
     Mutation: {
@@ -53,8 +73,8 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, {hosts, title, description, date, location}) => {
-            const event = await Event.create({hosts, title, description, date, location})
+        addEvent: async (parent, {hosts, title, description, date, location, contactInfo}) => {
+            const event = await Event.create({hosts, title, description, date, location, contactInfo})
 
             return event
         },
@@ -67,19 +87,32 @@ const resolvers = {
 
             return "Success!"
         },
-        rsvpEvent: async (parent, { eventId, attendee }) => {
+        rsvpEvent: async (parent, { eventId, userId, mainAttendee, plusOne }) => {
             const event = await Event.findOneAndUpdate(eventId);
-            
+        
             if (!event) {
                 throw new Error("Event not found");
             }
-            
-            const newAttendee = new Attendee({ name: attendee.name });
-            
-            event.attendees.push(newAttendee);
-            
+        
+            const mainAttendeeRsvp = new Attendee({
+                userId: userId,
+                name: mainAttendee.name
+            });
+        
+            if (plusOne) {
+                const plusOneRsvp = new Attendee({
+                    name: plusOne.name
+                });
+        
+                event.attendees.push(plusOneRsvp);
+            }
+        
+            event.attendees.push(mainAttendeeRsvp);
+        
             await event.save();
-            
+
+            await User.findByIdAndUpdate(userId, { $push: { events: eventId } })
+        
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {

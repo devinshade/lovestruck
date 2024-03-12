@@ -3,7 +3,11 @@ const { Schema, model } = mongoose;
 const Event = require('./Event')
 
 const attendeeSchema = new Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
