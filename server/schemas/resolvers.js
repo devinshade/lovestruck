@@ -27,25 +27,32 @@ const resolvers = {
             };
         },
         events: async () => {
-            const allEvents = await Event.find({}).populate('attendees');
+            const allEvents = await Event.find({})
             return allEvents;
         },
-        getNumberOfAttendees: async (parent, { eventId }) => {
-            const event = await Event.findById(eventId)
-
+        getNumberOfAttendees: async (parent, { eventId, plusOne }) => {
+            const event = await Event.findById(eventId);
+        
             if (!event) {
                 throw new Error('Event not found');
             }
-
+        
             const attendees = event.attendees.length;
-
-            return attendees;
+            let totalAttendees = attendees;
+        
+            event.attendees.forEach(attendee => {
+                if (attendee.plusOne) {
+                    ++totalAttendees;
+                }
+            });
+        
+            return totalAttendees;
         },
         getSingleEvent: async (parents, { eventId }) => {
-            const singleEvent = await Event.findById(eventId)
+            const singleEvent = await Event.findById(eventId).populate('attendees')
 
             if (!singleEvent) {
-                throw new Error ('Error not found')
+                throw new Error('Error not found')
             }
 
             return singleEvent;
@@ -79,7 +86,7 @@ const resolvers = {
         },
         rsvpEvent: async (parent, { eventId, mainAttendee, plusOne }, context) => {
             const event = await Event.findById(eventId).populate('attendees');
-            console.log(eventId, mainAttendee, plusOne)
+            
             if (!event) {
                 throw new Error("Event not found");
             }
@@ -94,12 +101,10 @@ const resolvers = {
                     lastName: plusOne.lastName
                 } : null
             });
-            console.log(mainAttendeeRsvp)
+            
             event.attendees.push(mainAttendeeRsvp);
 
             await event.save();
-            
-            console.log(event)
 
             await User.findByIdAndUpdate(context.user._id, { $push: { events: eventId } })
         

@@ -35,21 +35,31 @@ mutation AddEvent($hosts: String!, $title: String!, $location: String!, $date: S
     contactInfo
     attendees {
       _id
-      name
+      firstName
+      lastName
+      plusOne {
+        firstName
+        lastName
+      }
     }
   }
 }
 `;
 
 export const RSVP_EVENT = gql`
-mutation RsvpEvent($eventId: ID!, $userId: ID!, $mainAttendee: AttendeeDetails!) {
-  rsvpEvent(eventId: $eventId, userId: $userId, mainAttendee: $mainAttendee) {
+mutation RsvpEvent($eventId: ID!, $mainAttendee: AttendeeDetails!, $plusOne: PlusOneDetails) {
+  rsvpEvent(eventId: $eventId, mainAttendee: $mainAttendee, plusOne: $plusOne) {
     _id
     hosts
     location
     date
     attendees {
-      name
+      firstName
+      lastName
+      plusOne {
+        firstName
+        astName
+      }
     }
   }
 }
@@ -63,7 +73,12 @@ mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
     location
     date
     attendees {
-      name
+      firstName
+      lastName
+      plusOne {
+        firstName
+        lastName
+      }
     }
   }
 }

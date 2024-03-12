@@ -27,7 +27,16 @@ export const QUERY_SINGLE_EVENT = gql`
 export const NUMBER_OF_ATTENDEES = gql`
   query GET_NUMBER_OF_ATTENDEES($eventId: ID!) {
    getNumberOfAttendees(eventId: $eventId) {
-    _id
+    attendees {
+      _id
+      firstName
+      lastName
+      plusOne {
+        _id
+        firstName
+        lastName
+      }
+    }
    }
   }
 `
