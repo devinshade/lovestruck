@@ -26,7 +26,7 @@ const Profile = () => {
       </h2>
     </div>
     <div className="col-4 mx-2 custom-bg-light" id="img-container">
-          <Calendar className="custom-calendar"/>
+          <Calendar className="custom-calendar col-12 custom-border p-1"/>
         </div>
       </div>
     </section>
