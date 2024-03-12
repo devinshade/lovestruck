@@ -10,6 +10,19 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_EVENTS = gql`
+  query getEvents {
+    events {
+      _id
+      hosts
+      location
+      date
+      attendees {
+        name
+      }
+    }
+`;
+
 export const QUERY_SINGLE_EVENT = gql`
   query getSingleEvent($eventtId: ID!)
   event(eventId: $eventId) {
