@@ -31,9 +31,10 @@ const Footer = () => <footer className="page-footer font-small var-text-light cu
             <div className="col-md-4 mb-md-0 mb-3">
                 <h5 className="text-uppercase custom-underline custom-text-md">LinkedIn</h5>
                 <ul className="list-unstyled ">
+
                     <li><a className='footer-link' href="https://www.linkedin.com/in/lizzie-bumpers-90ba122b4/" >Lizzie Bumpers</a></li>
                     <li><a className='footer-link' href="https://www.linkedin.com/in/lucas-babers-1aa0862ab/" >Luke Babers</a></li>
-                    <li><a className='footer-link' href="" >Deborah Hariharan Margar</a></li>
+                    <li><a className='footer-link' href="https://www.linkedin.com/in/deborah-alexander-155365294/" >Deborah Alexander</a></li>
                     <li><a className='footer-link' href="https://www.linkedin.com/in/tyler-fruik/" >Tyler Fruik</a></li>
                     <li><a className='footer-link' href="https://www.linkedin.com/in/devin-shade-649640231/" >Devin Shade</a></li>
                 </ul>
