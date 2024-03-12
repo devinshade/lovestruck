@@ -8,12 +8,12 @@ import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
 import Oops from './pages/Oops/oops.jsx';
 import './main.css'
-import './GiftPot.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './GiftPot.css'
 
 const router = createBrowserRouter([
   {
