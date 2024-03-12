@@ -34,7 +34,7 @@ const eventSchema = new Schema({
         required: true
     },
     contactInfo: {
-        type: Number,
+        type: String,
         required: true,
     },
     creator: {

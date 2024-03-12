@@ -9,11 +9,13 @@ const typeDefs = `
         firstName: String
         lastName: String
         email: String
+        events: [Event]
     }
 
     type Attendee {
         _id: ID
-        name: String
+        firstName: String
+        lastName: String
     }
 
     type Event {
@@ -23,12 +25,14 @@ const typeDefs = `
         location: String
         date: String
         description: String
+        contactInfo: String
         attendees: [Attendee]
     }
 
     input AttendeeInput {
-        _id: ID
-        name: String
+        userId: ID
+        firstName: String
+        lastName: String
     }
 
     type Query {
@@ -37,13 +41,14 @@ const typeDefs = `
         events: [Event]
         getNumberOfAttendees(eventId: ID!): Int
         getSingleEvent(eventId: ID!): Event
+        getRSVP(userId: ID!): Event
     }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addEvent(hosts: String!, title: String!, location: String!, date: String!): Event
+        addEvent(hosts: String!, title: String!, location: String!, date: String!, contactInfo: String!): Event
         deleteEvent(eventId: ID!): Event
-        rsvpEvent(eventId: ID!, attendee: AttendeeInput!): Event
+        rsvpEvent(eventId: ID!, userId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event
         login(email: String!, password: String!): Auth

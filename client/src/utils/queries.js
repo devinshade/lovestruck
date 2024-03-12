@@ -46,12 +46,19 @@ export const NUMBER_OF_ATTENDEES = gql`
 `
 
 export const USER = gql `
-  query User($firstName: String!, $lastName: String!) {
+  query User {
     user {
       _id
       firstName
       lastName
       email
+      events {
+        _id
+        title
+        date
+        location
+        description
+      }
     } 
   }
 `
@@ -69,3 +76,14 @@ export const EVENT = gql`
     }
   }
 `
+
+export const GET_RSVPS = gql`
+query GetRSVPs($userId: ID!) {
+  event(userId: $userId) {
+    _id
+    attendees {
+      name
+    }
+  }
+}
+`;

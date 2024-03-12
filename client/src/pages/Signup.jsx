@@ -39,10 +39,14 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+    <main className="fullPage container container-fluid mx-auto pt-5">
+      <div className="row justify-center">
+        <div className="col-3 text-center" id="img-container">
+          <img className="login-img custom-border" src="/src/assets/images/Photo5.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="/src/assets/images/Photo2.png" alt="A couple getting married"/>
+        </div>
+        <div className="card col-5 custom-bg-light">
+          <h4 className="card-header text-center custom-bg-blue5 var-text-light custom-text-lg p-3 mt-3">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -51,7 +55,7 @@ const Signup = () => {
               </p>
             ) : (
               <>
-              <form onSubmit={handleFormSubmit}>
+              <form className='row p-5 ' onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
                   placeholder="First Name"
@@ -61,7 +65,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="form-input my-3"
                   placeholder="Last Name"
                   name="lastName"
                   type="text"
@@ -77,33 +81,43 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="form-input my-3"
                   placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+                <div className='text-center'>
+                  <button
+                    className="custom-btn p-3 px-5 custom-text-md"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
-              <div>
-                <a href="/Login">Login Instead</a>
+
+              <div className='text-center'>
+                <a className='var-text-blue3 custom-text-md' href="/Login">
+                  Already have an account? <br />
+                  Click here to <br />
+                  Login instead! <br />
+                  </a>
               </div>
               </>
             )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
             )}
           </div>
+        </div>
+        <div className="col-3 text-center" id="img-container">
+          <img className="login-img custom-border" src="/src/assets/images/Photo6.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="/src/assets/images/Photo1.png" alt="A couple getting married"/>
         </div>
       </div>
     </main>

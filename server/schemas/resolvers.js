@@ -7,19 +7,24 @@ const resolvers = {
             return User.findById(context.user._id)
         },
         user: async (parent, args, context) => {
-            const user = await User.findById(context.user._id)
+            const user = await User.findById(context.user._id).populate('events')
 
             if (!user) {
                 throw new Error('User not found')
             }
-
-            const events = await Event.find({ 'attendees.userId': context.user._id})
-
+            
+            const events = await Event.find({ 'attendees.userId': context.user._id });
+            
             if (!events) {
                 throw new Error('Event not found');
             }
+            
+            console.log("events:", user.events)
 
-            return events;
+            return {
+                user, 
+                events
+            };
         },
         events: async () => {
             const allEvents = await Event.find({}).populate('attendees');
@@ -44,6 +49,11 @@ const resolvers = {
             }
 
             return singleEvent;
+        },
+        getRSVP: async (parents, { userId }, context) => {
+            const user = await User.findById(userId).populate('events')
+            
+            return user
         }
     },
     Mutation: {
@@ -53,8 +63,8 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, {hosts, title, description, date, location}) => {
-            const event = await Event.create({hosts, title, description, date, location})
+        addEvent: async (parent, {hosts, title, description, date, location, contactInfo}) => {
+            const event = await Event.create({hosts, title, description, date, location, contactInfo})
 
             return event
         },
@@ -67,19 +77,29 @@ const resolvers = {
 
             return "Success!"
         },
-        rsvpEvent: async (parent, { eventId, attendee }) => {
+        rsvpEvent: async (parent, { eventId, userId, attendee }) => {
             const event = await Event.findOneAndUpdate(eventId);
             
             if (!event) {
                 throw new Error("Event not found");
             }
+        
+            const attendeeRsvp = new Attendee({
+                userId: userId,
+                firstName: attendee.firstName,
+                lastName: attendee.lastName
+            });
             
-            const newAttendee = new Attendee({ name: attendee.name });
-            
-            event.attendees.push(newAttendee);
-            
+            if (!Array.isArray(event.attendees)) {
+                event.attendees = [];
+            }
+
+            event.attendees.push(attendeeRsvp);
+        
             await event.save();
-            
+
+            await User.findByIdAndUpdate(userId, { $push: { events: eventId } })
+
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {

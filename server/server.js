@@ -40,7 +40,7 @@ const startApolloServer = async () => {
     app.use(express.json());
 
     app.use('/graphql', expressMiddleware(server, {
-        context: authMiddleware // same as the import
+        context: authMiddleware
     }))
 
     // this wont go into play until we create the dist folder with npm run build
