@@ -1,6 +1,7 @@
 import React from 'react';
-
 import './Profile.css'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const Profile = () => {
   return (<section className='fullPage'>
@@ -25,11 +26,11 @@ const Profile = () => {
       </h2>
     </div>
     <div className="col-4 mx-2 custom-bg-light" id="img-container">
-      <img className="col-12 custom-border p-1" src="/src/assets/images/CalendarPlaceholder.png" alt="PLACEHOLDER"/>
-    </div>
-</div>
-  </section>
-  )
+          <Calendar className="custom-calendar"/>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Profile;

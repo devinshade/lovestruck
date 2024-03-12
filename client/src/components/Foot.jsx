@@ -33,7 +33,7 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
                 <ul className="list-unstyled ">
                     <li><a href="https://www.linkedin.com/in/lizzie-bumpers-90ba122b4/" class="link-light">Lizzie Bumpers</a></li>
                     <li><a href="https://www.linkedin.com/in/lucas-babers-1aa0862ab/" class="link-light">Luke Babers</a></li>
-                    {/* <li><a href="" class="link-light">Deborah Hariharan Margar</a></li> */}
+                    <li><a href="https://www.linkedin.com/in/deborah-alexander-155365294/" class="link-light">Deborah Alexander</a></li>
                     <li><a href="https://www.linkedin.com/in/tyler-fruik/" class="link-light">Tyler Fruik</a></li>
                     <li><a href="https://www.linkedin.com/in/devin-shade-649640231/" class="link-light">Devin Shade</a></li>
                 </ul>
