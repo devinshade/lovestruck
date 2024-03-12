@@ -65,7 +65,7 @@ export const EVENT = gql`
 `
 
 export const GET_RSVPS = gql`
-query GetRSVPs($usertId: ID!) {
+query GetRSVPs($userId: ID!) {
   event(userId: $userId) {
     _id
     attendees {

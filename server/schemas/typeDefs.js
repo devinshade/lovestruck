@@ -14,7 +14,8 @@ const typeDefs = `
 
     type Attendee {
         _id: ID
-        name: String
+        firstName: String
+        lastName: String
     }
 
     type Event {
@@ -29,17 +30,7 @@ const typeDefs = `
     }
 
     input AttendeeInput {
-        mainAttendee: AttendeeDetails
-        plusOne: PlusOneDetails
-    }
-    
-    input AttendeeDetails {
         userId: ID
-        firstName: String
-        lastName: String
-    }
-
-    input PlusOneDetails {
         firstName: String
         lastName: String
     }
@@ -50,14 +41,14 @@ const typeDefs = `
         events: [Event]
         getNumberOfAttendees(eventId: ID!): Int
         getSingleEvent(eventId: ID!): Event
-        getRSVP(userId: ID!): [Event]
+        getRSVP(userId: ID!): Event
     }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addEvent(hosts: String!, title: String!, location: String!, date: String!, contactInfo: String!): Event
         deleteEvent(eventId: ID!): Event
-        rsvpEvent(eventId: ID!, userId: ID!, mainAttendee: AttendeeDetails!, plusOne: PlusOneDetails): Event
+        rsvpEvent(eventId: ID!, userId: ID!, attendee: AttendeeInput!): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event
         login(email: String!, password: String!): Auth
