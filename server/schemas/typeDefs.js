@@ -26,6 +26,7 @@ const typeDefs = `
         date: String
         description: String
         contactInfo: String
+        creator: User
         attendees: [Attendee]
     }
 
