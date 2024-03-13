@@ -36,8 +36,11 @@ const attendeeSchema = new Schema({
         type: Boolean
     },
     plusOne: {
-        required: false,
-        type: plusOneSchema
+        type: {
+            firstName: String,
+            lastName: String
+        },
+        default: null
     },
 });
 

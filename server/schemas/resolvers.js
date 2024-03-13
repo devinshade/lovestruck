@@ -22,42 +22,41 @@ const resolvers = {
             console.log("events:", user.events)
 
             return {
-                user, 
+                user,
                 events
             };
         },
         events: async () => {
-            const allEvents = await Event.find({})
+            const allEvents = await Event.find({});
+            
             return allEvents;
         },
-        getNumberOfAttendees: async (parent, { eventId, plusOne }) => {
+        getNumberOfAttendees: async (parent, { eventId }) => {
             const event = await Event.findById(eventId);
         
             if (!event) {
                 throw new Error('Event not found');
             }
         
-            const attendees = event.attendees.length;
-            let totalAttendees = attendees;
+            const totalAttendees = event.attendees.length;
+            console.log("Total Attendees:", totalAttendees)
+            const plusOneCount = event.attendees.filter(attendee => attendee.plusOne).length;
+            console.log("plus ones:", plusOneCount)
+            const total = totalAttendees + plusOneCount;
         
-            event.attendees.forEach(attendee => {
-                if (attendee.plusOne) {
-                    ++totalAttendees;
-                }
-            });
-        
-            return totalAttendees;
+            return total;
         },
-        getSingleEvent: async (parents, { eventId }) => {
-            const singleEvent = await Event.findById(eventId).populate('attendees')
+        getSingleEvent: async (parent, { eventId }) => {
+            const singleEvent = await Event.findById(eventId)
 
+            console.log(singleEvent)
             if (!singleEvent) {
                 throw new Error('Error not found')
             }
 
-            return singleEvent;
+            return singleEvent
         },
-        getRSVP: async (parents, { userId }, context) => {
+        getRSVP: async (parent, { userId }, context) => {
             const user = await User.findById(userId).populate('events')
             
             return user

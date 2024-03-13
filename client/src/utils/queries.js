@@ -18,23 +18,33 @@ export const QUERY_EVENTS = gql`
       location
       date
       attendees {
-        name
+        firstName
+        lastName
+        plusOne {
+          firstName
+          lastName
+        }
       }
     }
   }
 `;
 
 export const QUERY_SINGLE_EVENT = gql`
-  query getSingleEvent($eventtId: ID!){
-  event(eventId: $eventId) {
-    _id
-    hosts
-    description
-    location
-    date
-    attendees {
-      name
-    }
+  query getSingleEvent($eventId: ID!) {
+    event(eventId: $eventId) {
+      _id
+      hosts
+      description
+      location
+      date
+      attendees {
+        firstName
+        lastName
+        plusOne {
+          firstName
+          lastName
+        }
+      }
     }
   }
 `;
@@ -47,7 +57,6 @@ export const NUMBER_OF_ATTENDEES = gql`
       firstName
       lastName
       plusOne {
-        _id
         firstName
         lastName
       }
@@ -82,7 +91,13 @@ export const EVENT = gql`
       location
       date
       attendees {
-        name
+        _id
+        firstName
+        lastName
+        plusOne {
+          firstName
+          lastName
+        }
       }
     }
   }
@@ -93,7 +108,13 @@ query GetRSVPs($userId: ID!) {
   event(userId: $userId) {
     _id
     attendees {
-      name
+      _id
+      firstName
+      lastName
+      plusOne {
+        firstName
+        lastName
+      }
     }
   }
 }
