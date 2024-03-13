@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-const EventForm = (props) => {
+const EventForm = () => {
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
@@ -23,7 +23,6 @@ const EventForm = (props) => {
     const [addEvent, { error, data }] = useMutation(ADD_EVENT);
 
     const handleInputChange = (e) => {
-        // Getting the value and name of the input which triggered the change
         const { name, value } = e.target
 
         setFormState({
@@ -34,26 +33,33 @@ const EventForm = (props) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log(formState);
-        try {const { data } = await addEvent({
-                variables: { ...formState },
-            });
-        
-        Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
+
+        if (!formState.eventName || !formState.date) {
+            console.log('Event Name and Date are required');
+            return;
+        }
+
+        try {
+            const { data } = await addEvent({ variables: { ...formState } });
+            Auth.login(data.login.token);
+            // Update UI optimistically
+            // Add the new event to the events array
+        } catch (error) {
+            console.error(error);
+            // Display error message to the user
         }
 
         setFormState({
             firstName: '',
             lastName: '',
-            event: '',
+            eventName: '',
             description: '',
-            location: '', 
+            location: '',
             date: '',
             contactInfo: ''
-        })
-    }
+        });
+    };
+    
     return (
         <div className="container text-center">
             <h1>Welcome {formState.firstName}!</h1>

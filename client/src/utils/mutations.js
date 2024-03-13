@@ -48,7 +48,8 @@ mutation RsvpEvent($eventId: ID!, $userId: ID!, $attendee: Attendeeinput!) {
     location
     date
     attendees {
-      name
+      firstName
+      lastName
     }
   }
 }
@@ -62,7 +63,8 @@ mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
     location
     date
     attendees {
-      name
+      firstName
+      lastName
     }
   }
 }

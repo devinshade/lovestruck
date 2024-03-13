@@ -20,7 +20,7 @@ const MyEvents = () => {
 
   return (
     <div>
-      {eventId > 0 ? (
+      {eventId && userData?.events?.length > 0 && (
         userData.events.map((event) => (
           <Card key={event._id} style={{ width: '18rem' }}>
             <Card.Body>
@@ -35,7 +35,8 @@ const MyEvents = () => {
             </Card.Body>
           </Card>
         ))
-      ) : (
+      )}
+      {!eventId && (
         <div>
           <p>You don't have any events!</p>
           <Link to="/events">Create an Event</Link>
