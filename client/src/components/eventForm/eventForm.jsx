@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './style.css';
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
-import Auth from '../../utils/auth';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -36,12 +35,8 @@ const EventForm = () => {
 
         try {
             const { data } = await addEvent({ variables: { ...formState } });
-            Auth.login(data.login.token);
-            // Update UI optimistically
-            // Add the new event to the events array
         } catch (error) {
             console.error(error);
-            // Display error message to the user
         }
 
         setFormState({

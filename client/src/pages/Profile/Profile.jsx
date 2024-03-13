@@ -33,7 +33,7 @@ const Profile = () => {
         <h3>{ userData.firstName } { userData.lastName }</h3>
       </div>
       <div>
-        <button className="custom-btn header-btns" onClick={toggleDisplay}>
+        <button className="custom-btn header-btns" onClick={toggleDisplay} style={{ width: '90%' }}>
           {showMyWedding ? "Show Other Weddings" : "Show My Wedding"}
         </button>
       </div>
