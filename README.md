@@ -14,7 +14,7 @@
   - [Features](#features)  
   - [NPMs](#npms)    
   - [Contributing](#contributing)  
-  - [Questions](#questions)  
+  - [Coders](#coders)  
   
   ## Installation
   
@@ -68,16 +68,14 @@
  - Accomodation of a broader range of events other than just weddings 
 
   
-  ## Questions
+  ## Coders
   
-  For any questions, please contact me:
-  
-  GitHub:
-  * [Devin Shade]("https://github.com/devinshade") 
-  * [Tyler Fruik]("https://github.com/tylerFruik")
-  * [Lizzie Bumpers]("https://github.com/laude-noctis")
-  * [Deborah Hariharan]("https://github.com/Luwylbab")
-  * [Luke Babers]("https://github.com/Luwylbab")
+  GitHub:  
+  [Devin Shade]("https://github.com/devinshade")   
+  [Tyler Fruik]("https://github.com/tylerFruik")  
+  [Lizzie Bumpers]("https://github.com/laude-noctis")  
+  [Deborah Hariharan]("https://github.com/Luwylbab")   
+  [Luke Babers]("https://github.com/Luwylbab")  
 
   ## Screenshot
   ![photo of webpage](./client/src/assets/images/screenshot.png)
