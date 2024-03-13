@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
+import Form from '../../components/eventForm/eventForm';
 
 const MyEvents = () => {
   const { data } = useQuery(QUERY_ME);
@@ -12,7 +13,9 @@ const MyEvents = () => {
     setUserData(data?.me);
   }, [data]);
 
-  // const eventId = userData.filter(event => event.creator === userData.id)?.id;
+  const hasEvents = userData && userData.events && userData.events.length > 0;
+
+  const eventId = hasEvents ? userData.events[0].id : null;
 
   if (!userData) {
     return <p>Loading...</p>;
@@ -27,7 +30,7 @@ const MyEvents = () => {
               <Card.Title>{event.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">{event.description}</Card.Subtitle>
               <Card.Text>
-                <div>Hosts: {event.hosts}</div>
+                <div>Hosts: {event.firstName} {event.lastName}</div>
                 <div>Location: {event.location}</div>
                 <div>Date: {event.date}</div>
               </Card.Text>
@@ -37,10 +40,7 @@ const MyEvents = () => {
         ))
       )}
       {!eventId && (
-        <div>
-          <p>You don't have any events!</p>
-          <Link to="/events">Create an Event</Link>
-        </div>
+          <Form />
       )}
     </div>
   );

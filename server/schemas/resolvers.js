@@ -60,7 +60,7 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, { hosts, title, description, date, location, contactInfo }, context) => {
+        addEvent: async (parent, { firstName, lastName, title, description, date, location, contactInfo }, context) => {
             console.log("Hello frontEnd")
             const { user } = context;
             if (!user) {
@@ -68,7 +68,8 @@ const resolvers = {
             }
             console.log(user)
             const event = await Event.create({
-                hosts,
+                firstName,
+                lastName,
                 title,
                 description,
                 date,

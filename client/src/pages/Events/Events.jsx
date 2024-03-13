@@ -1,6 +1,5 @@
 // review Projects from tutor video
 import React, { useState, useEffect } from 'react';
-import Form from '../../components/eventForm/eventForm';
 
 // import Event from '../../components/event/event'; // Assuming you have an Event component to display individual events
 // import { getAllEvents } from '../../utils/API'; // Function to fetch all events
@@ -20,7 +19,6 @@ const Events = () => {
 
     return (
         <section className='fullPage'>
-            <Form />
             {/* <h2>All Events:</h2>
             {loading ? (
                 <p>Loading...</p>
