@@ -35,6 +35,7 @@ const EventForm = () => {
 
         try {
             const { data } = await addEvent({ variables: { ...formState } });
+
         } catch (error) {
             console.error(error);
         }
