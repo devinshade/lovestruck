@@ -19,12 +19,11 @@ const Profile = () => {
 
   console.log(data);
 
+  const [ showMyWedding, setShowMyWedding] = useState(true);
 
-  // const [events, setEvents] = useState([]);
-
-  // useEffect(() => {
-  //   setUserData(data?.me);
-  // }, [data]);
+  const toggleDisplay = () => {
+    setShowMyWedding(prevState => !prevState);
+  };
 
   return (<section className='fullPage'>
 <div className='row w-100 p-5'>
@@ -33,22 +32,25 @@ const Profile = () => {
       <div className='text-center border-top border-bottom my-3 var-text-blue5'>
         <h3>{ userData.firstName } { userData.lastName }</h3>
       </div>
-      <div className='text-center'>
-        <button className="custom-btn header-btns">
-          This button swaps
-          <br />
-          the pink div between
-          My Wedding and Events
+      <div>
+        <button className="custom-btn header-btns" onClick={toggleDisplay}>
+          {showMyWedding ? "Show Other Weddings" : "Show My Wedding"}
         </button>
       </div>
     </div>
-    <div className='col-6 bg-pink'>
+    <div className='col-6 var-bg-blue2 custom-border var-text-light'>
+      {showMyWedding ? (
       <div className='m-5'>
         <h1 className='text-center custom-underline'>My Wedding</h1>
         <div>
           <MyEvents />
         </div>
       </div>
+      ) : (
+        <div>
+          IT WORKS
+        </div>
+      )}
     </div>
 
     <div className="col-4 mx-2 custom-bg-light" id="img-container">
