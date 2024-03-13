@@ -1,6 +1,6 @@
 // review Projects from tutor video
 import React, { useState, useEffect } from 'react';
-import EventForm from '../../components/eventForm/eventForm';
+import Form from '../../components/eventForm/eventForm';
 // import Event from '../../components/event/event'; // Assuming you have an Event component to display individual events
 // import { getAllEvents } from '../../utils/API'; // Function to fetch all events
 
@@ -26,7 +26,7 @@ const Events = () => {
     console.log(events)
     return (
         <section className='fullPage'>
-            <EventForm />
+            <Form />
             <h2>All Events:</h2>
             {events.map((event, index) => (
                 <Event key={index} event={event} />

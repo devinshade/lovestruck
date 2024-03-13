@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './style.css';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import Button from 'react-bootstrap/Button';
@@ -8,16 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
-import { QUERY_ME } from '../../utils/queries';
 
-import { createEvent } from '../../utils/API'
-
-const EventForm = () => {
-    const { data } = useQuery(QUERY_ME);
-    const [userData, setUserData] = useState();
-    const [newEvent, setNewEvent] = useState();
-    const [addEvent, { error }] = useMutation(ADD_EVENT);
-    
+const EventForm = (props) => {
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
@@ -25,42 +17,13 @@ const EventForm = () => {
         description: '',
         location: '', 
         date: '',
-        contactInfo: '',
-        creator: '',
-    });    
-    
-    useEffect(() => {
-        if (data) {
-            setUserData((prevData) => ({
-                ...prevData,
-                ...data?.me,
-                creator: data?.me?._id || '',
-            }));
-        }
-    }, [data]);
-    
+        contactInfo: ''
+    });
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
+    const [addEvent, { error, data }] = useMutation(ADD_EVENT);
 
-        try {
-            const event = await createEvent(formState);
-            const eventData = {
-                hosts: event.firstName + ' ' + event.lastName,
-                title: event.title,
-                location: event.location,
-                date: event.date,
-                description: event.description,
-                contactInfo: event.contactInfo,
-            };
-            setNewEvent([eventData]);
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    
     const handleInputChange = (e) => {
+        // Getting the value and name of the input which triggered the change
         const { name, value } = e.target
 
         setFormState({
@@ -69,6 +32,28 @@ const EventForm = () => {
         })
     };
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        console.log(formState);
+        try {const { data } = await addEvent({
+                variables: { ...formState },
+            });
+        
+        Auth.login(data.login.token);
+        } catch (e) {
+            console.error(e);
+        }
+
+        setFormState({
+            firstName: '',
+            lastName: '',
+            event: '',
+            description: '',
+            location: '', 
+            date: '',
+            contactInfo: ''
+        })
+    }
     return (
         <div className="container text-center">
             <h1>Welcome {formState.firstName}!</h1>
@@ -109,6 +94,7 @@ const EventForm = () => {
                         />
                     </Form.Group>
 
+                    {/* ! TODO: Add field for description */}
                     <Form.Group className="mb-3" controlId="formGridDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control
