@@ -36,3 +36,14 @@ export const getAllEvents = (token) => {
     },
   });
 };
+
+export const createEvent = (eventData, token) => {
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(eventData),
+  });
+}
