@@ -8,12 +8,13 @@
   
   ## Table of Contents
   
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Features](#features)
-  - [Contributing](#contributing)
-  - [Questions](#questions)
+  - [Installation](#installation)  
+  - [Usage](#usage)  
+  - [License](#license)  
+  - [Features](#features)  
+  - [NPMs](#npms)    
+  - [Contributing](#contributing)  
+  - [Questions](#questions)  
   
   ## Installation
   
@@ -41,7 +42,7 @@
   
   This project is licensed under the [MIT License](LICENSE.md)
 
-  ## Features and NPMs
+  ## Features
 
   - User account creation and authentication
   - Event creation with customizable details
@@ -49,8 +50,8 @@
   - Interactive calendar view
   - Responsive design for mobile and desktop devices
 
-  NPMs:
-  [Vite](https://www.npmjs.com/package/vite)  
+  ## NPMs  
+  [Vite](https://www.npmjs.com/package/vite)   
   [Apollo/Client](https://www.npmjs.com/package/@apollo/client)  
   [Apollo/Server](https://www.npmjs.com/package/@apollo/server)  
   [React](https://www.npmjs.com/package/react) (Including the react-dom and react-router-dom)    
