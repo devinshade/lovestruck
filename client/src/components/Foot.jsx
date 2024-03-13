@@ -7,11 +7,11 @@ const Footer = () => <footer className="page-footer font-small var-text-light cu
             <div className="col-md-4 mt-md-0 mt-3">
                 <h5 className="text-uppercase custom-underline custom-text-md">Portfolio</h5>
                 <ul className="list-unstyled">
-                    <li><a className='footer-link' target="_blank" href="" >Lizzie Bumpers</a></li>
-                    <li><a className='footer-link' target="_blank" href="" >Luke Babers</a></li>
+                    <li><a className='footer-link' target="_blank" href="https://main--bumpersresume.netlify.app/" >Lizzie Bumpers</a></li>
+                    <li><a className='footer-link' target="_blank" href="https://relaxed-scone-337b91.netlify.app/" >Luke Babers</a></li>
                     <li><a className='footer-link' target="_blank" href="" >Deborah Hariharan Margar</a></li>
-                    <li><a className='footer-link' target="_blank" href="" >Tyler Fruik</a></li>
-                    <li><a className='footer-link' target="_blank" href="" >Devin Shade</a></li>
+                    <li><a className='footer-link' target="_blank" href="https://tylerfruik.github.io/portfolio-redeploy/" >Tyler Fruik</a></li>
+                    <li><a className='footer-link' target="_blank" href="https://dev-react-portfolio.netlify.app/projects" >Devin Shade</a></li>
                 </ul>
             </div>
 
