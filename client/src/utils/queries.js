@@ -14,7 +14,8 @@ export const QUERY_ME = gql`
 export const QUERY_EVENTS = gql`
   query getEvents {
     events {
-      hosts
+      firstName
+      lastName
       title
       location
       description
@@ -33,7 +34,8 @@ export const QUERY_SINGLE_EVENT = gql`
   query getSingleEvent($eventtId: ID!){
   event(eventId: $eventId) {
     _id
-    hosts
+    firstName
+    lastName
     description
     location
     date
@@ -76,7 +78,8 @@ export const EVENT = gql`
   query {
     events {
       _id
-      hosts
+      firstName
+      lastName
       location
       date
       attendees {

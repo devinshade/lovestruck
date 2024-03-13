@@ -13,7 +13,7 @@ const EventForm = () => {
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
-        event: '',
+        title: '',
         description: '',
         location: '', 
         date: '',
@@ -34,11 +34,6 @@ const EventForm = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formState.eventName || !formState.date) {
-            console.log('Event Name and Date are required');
-            return;
-        }
-
         try {
             const { data } = await addEvent({ variables: { ...formState } });
             Auth.login(data.login.token);
@@ -52,7 +47,7 @@ const EventForm = () => {
         setFormState({
             firstName: '',
             lastName: '',
-            eventName: '',
+            title: '',
             description: '',
             location: '',
             date: '',
@@ -62,8 +57,8 @@ const EventForm = () => {
     
     return (
         <div className="container text-center">
-            <h1>Welcome {formState.firstName}!</h1>
-            <Card className="container text-center" style={{ width: '44rem' }}>
+            <h1>Create your wedding now!</h1>
+            <Card className="container text-center " style={{ width: '100%' }}>
                 <Form onSubmit={handleFormSubmit}>
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridFirstName">
@@ -89,11 +84,11 @@ const EventForm = () => {
                         </Form.Group>
                     </Row>
             
-                    <Form.Group className="mb-3" controlId="formGridEventName">
+                    <Form.Group className="mb-3" controlId="formGridtitle">
                         <Form.Label>Event Name</Form.Label>
                         <Form.Control
-                        value={formState.event}
-                        name='event'
+                        value={formState.title}
+                        name='title'
                         onChange={handleInputChange}
                         type='text'
                         placeholder='Event Name'
