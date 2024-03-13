@@ -30,6 +30,7 @@ return (<>
           <div>Date: {event.date}</div>
         </Card.Text>
         <Card.Link href="/donate">Donate to the HoneyPot</Card.Link>
+
         <Card.Link href="/events">Create an Event</Card.Link>
       </Card.Body>
     </Card>
