@@ -8,12 +8,13 @@
   
   ## Table of Contents
   
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Features](#features)
-  - [Contributing](#contributing)
-  - [Questions](#questions)
+  - [Installation](#installation)  
+  - [Usage](#usage)  
+  - [License](#license)  
+  - [Features](#features)  
+  - [NPMs](#npms)    
+  - [Contributing](#contributing)  
+  - [Questions](#questions)  
   
   ## Installation
   
@@ -43,12 +44,21 @@
 
   ## Features
 
-- User account creation and authentication
-- Event creation with customizable details
-- Real-time RSVP tracking
-- Interactive calendar view
-- Responsive design for mobile and desktop devices
-  
+  - User account creation and authentication
+  - Event creation with customizable details
+  - Real-time RSVP tracking
+  - Interactive calendar view
+  - Responsive design for mobile and desktop devices
+
+  ## NPMs  
+  [Vite](https://www.npmjs.com/package/vite)   
+  [Apollo/Client](https://www.npmjs.com/package/@apollo/client)  
+  [Apollo/Server](https://www.npmjs.com/package/@apollo/server)  
+  [React](https://www.npmjs.com/package/react) (Including the react-dom and react-router-dom)    
+  [JWT](https://www.npmjs.com/package/jsonwebtoken)  
+  [GraphQL](https://www.npmjs.com/package/graphql)  
+  [MonGoose](https://www.npmjs.com/package/mongoose)  
+
   ## Contributing
   
  - Make event private to creator and invited guests
@@ -68,4 +78,7 @@
   * [Lizzie Bumpers]("https://github.com/laude-noctis")
   * [Deborah Hariharan]("https://github.com/Luwylbab")
   * [Luke Babers]("https://github.com/Luwylbab")
+
+  ## Screenshot
+  ![photo of webpage](./client/src/assets/images/screenshot.png)
   
