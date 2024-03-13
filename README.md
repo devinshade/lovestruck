@@ -1,17 +1,18 @@
-# lovestruck
+# Lovestruck
+
   ## Description
 
-  Lovestruck aims to be the single point of contact for all your wedding details, track guest rsvps, and receive donations to the 'HoneyPot' as a wedding gift.
-  
-  Log into Lovestruck to create an event or RSVP to an existing event.
+  LoveStruck is an online RSVP platform designed to streamline the process of managing wedding guest confirmations. In the era of digital solutions for almost every aspect of life, LoveStruck RSVP stands out as a beacon for couples embarking on the journey of marriage. Our motivation for this project was born from the complexities and often tedious task of tracking who will be joining the couple on their special day. We sought to create a tool that not only saves time but also brings a level of joy and ease to wedding planning.
+
+  Through this application, we solved the all-too-common problem of managing an ever-changing guest list. LoveStruck ensures that all invitations are accounted for, responses are tracked, and no one is accidentally left out. Building this project from the ground up has been a tremendous learning opportunity, allowing us to dive deep into the MERN stack, explore the intricacies of GraphQL, and refine our understanding of responsive web design principles. We emerged from this experience not only with a robust application but with enriched knowledge and new perspectives on full-stack development. 
   
   ## Table of Contents
   
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
+  - [Features](#features)
   - [Contributing](#contributing)
-  - [Tests](#tests)
   - [Questions](#questions)
   
   ## Installation
@@ -19,25 +20,43 @@
  Run: <br>
  ``npm i`` <br>
  ``npm run develop``
+
  or visit link at
  <!-- TODO: insert deployed app -->
  [Lovestruck]("")
   
   ## Usage
   
-  Create an account and log in to create an event or RSVP to an existing event. Once signed in, you can RSVP, add a +1, view event details,  choose meal option, and donate to the 'Honeypot'.
+  1. Sign up for an account and log in
+  2. Once signed in, you can: 
+      A. Create an event 
+      B. RSVP to an existing event
+        - Add a +1, view event details
+        - Choose meal option 
+        - Donate to the 'Honeypot'.
+        
+  View Demo Video: <!-- TODO: insert Demo Video (and screenshots?)-->
   
   ## License
   
-  MIT
+  This project is licensed under the [MIT License](LICENSE.md)
+
+  ## Features
+
+- User account creation and authentication
+- Event creation with customizable details
+- Real-time RSVP tracking
+- Interactive calendar view
+- Responsive design for mobile and desktop devices
   
   ## Contributing
   
- Make event private to creator and invited guests, add hotel reservations and travel information.
-  
-  ## Tests
-  
-  n/a
+ - Make event private to creator and invited guests
+ - Add hotel reservations and travel information
+ - Adding a gift registry section where guests can see and select gifts for couple
+ - Integrating external APIs to offer additional services like accommodation booking or navigationto the event venue
+ - Accomodation of a broader range of events other than just weddings 
+
   
   ## Questions
   
@@ -49,3 +68,4 @@
   * [Lizzie Bumpers]("https://github.com/laude-noctis")
   * [Deborah Hariharan]("https://github.com/Luwylbab")
   * [Luke Babers]("https://github.com/Luwylbab")
+  
