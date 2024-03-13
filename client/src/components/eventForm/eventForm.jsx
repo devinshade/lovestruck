@@ -42,33 +42,23 @@ const EventForm = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-      
+
         try {
-          const token = localStorage.getItem('id_token');
-          const response = await createEvent(formState, token);
-      
-          if (!response.ok) {
-            console.error('Event creation failed:', response.statusText);
-            return;
-          }
-      
-          const event = await response.json();
-          const eventData = {
-            hosts: event.firstName + ' ' + event.lastName,
-            title: event.title,
-            location: event.location,
-            date: event.date,
-            description: event.description,
-            contactInfo: event.contactInfo,
-          };
-      
-          setNewEvent([eventData]);
+            const event = await createEvent(formState);
+            const eventData = {
+                hosts: event.firstName + ' ' + event.lastName,
+                title: event.title,
+                location: event.location,
+                date: event.date,
+                description: event.description,
+                contactInfo: event.contactInfo,
+            };
+            setNewEvent([eventData]);
+
         } catch (err) {
-          console.error('Error creating event:', err);
+            console.log(err)
         }
-    };
-    
-      
+    }
     
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -78,18 +68,6 @@ const EventForm = () => {
             [name]: value
         })
     };
-
-    const handleSaveEvent = async () => {
-        try {
-            const { data } = await addEvent({
-                variables: { event: formState }
-            });
-
-            Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
-        }
-    }
 
     return (
         <div className="container text-center">
