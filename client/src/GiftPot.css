@@ -142,24 +142,6 @@ header h1 {
   font-size: xxx-large;
 }
 
-/* calendar text color */
-.fc-daygrid-day-top a {
-  color:var(--dark);
-}
-/* calendar name day text color */
-.fc-col-header a {
-color:var(--dark)
-}
-/* calendar lines padding */
-.fc td, .fc th {
-  padding: 1px;
-}
-/* calendar lines border attributes */
-.fc-theme-standard td, .fc-theme-standard th {
-border: 2px solid var(--dark);
-border-radius: 1px;
-}
-
 /* #endregion */
 /*  * LOGIN-MENU */ /* #region */
 #login-menu {
