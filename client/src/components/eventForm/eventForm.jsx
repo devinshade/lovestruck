@@ -36,12 +36,9 @@ const EventForm = () => {
 
         try {
             const { data } = await addEvent({ variables: { ...formState } });
-            Auth.login(data.login.token);
-            // Update UI optimistically
-            // Add the new event to the events array
+            Auth.login(data.token);
         } catch (error) {
             console.error(error);
-            // Display error message to the user
         }
 
         setFormState({
