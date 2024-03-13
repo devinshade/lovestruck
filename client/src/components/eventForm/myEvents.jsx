@@ -1,44 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
-
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
-// Import the QUERY_SINGLE_THOUGHT query from our utility file
-import { QUERY_SINGLE_EVENT } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 
 const MyEvents = () => {
-// Use `useParams()` to retrieve value of the route parameter `:thoughtId`
-const { eventId } = useParams();
+  const { data } = useQuery(QUERY_ME);
+  const [userData, setUserData] = useState();
+  
+  useEffect(() => {
+    setUserData(data?.me);
+  }, [data]);
 
-const { data } = useQuery(QUERY_SINGLE_EVENT, {
-// Pass the `thoughtId` URL parameter into query to retrieve this thought's data
-variables: { eventId: eventId },
-});
+  const eventId = userData.filter(event => event.creator === userData.id)?.id;
 
-const event = data?.event || {};
+  if (!userData) {
+    return <p>Loading...</p>;
+  }
 
-return (<>
-  <div>
-  <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{event.title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{event.description}</Card.Subtitle>
-        <Card.Text>
-          <div>Hosts: {event.hosts}</div>
-          <div>Location: {event.location}</div>
-          <div>Date: {event.date}</div>
-        </Card.Text>
-        <Card.Link href="/donate">Donate to the HoneyPot</Card.Link>
-
-        <Card.Link href="/events">Create an Event</Card.Link>
-      </Card.Body>
-    </Card>
-  </div>
-  </>
+  return (
+    <div>
+      {eventId ? (
+        <Card style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>{userData.events[0].title}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{userData.events[0].description}</Card.Subtitle>
+            <Card.Text>
+              <div>Hosts: {userData.events[0].hosts}</div>
+              <div>Location: {userData.events[0].location}</div>
+              <div>Date: {userData.events[0].date}</div>
+            </Card.Text>
+            <Card.Link href="/donate">Donate to the HoneyPot</Card.Link>
+          </Card.Body>
+        </Card>
+      ) : (
+        <div>
+          <p>You don't have any events!</p>
+          <Link to="/events">Create an Event</Link>
+        </div>
+      )}
+    </div>
   );
 };
 
 export default MyEvents;
-
-
