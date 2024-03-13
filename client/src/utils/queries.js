@@ -21,10 +21,11 @@ export const QUERY_EVENTS = gql`
         name
       }
     }
+  }
 `;
 
 export const QUERY_SINGLE_EVENT = gql`
-  query getSingleEvent($eventtId: ID!)
+  query getSingleEvent($eventtId: ID!){
   event(eventId: $eventId) {
     _id
     hosts
@@ -33,6 +34,7 @@ export const QUERY_SINGLE_EVENT = gql`
     date
     attendees {
       name
+    }
     }
   }
 `;

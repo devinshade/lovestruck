@@ -36,11 +36,12 @@ const EventForm = (props) => {
         e.preventDefault();
         console.log(formState);
         try {
+            const info = {hosts: formState.firstName + ' ' + formState.lastName, title: formState.event, description: formState.description, location: formState.location, date: formState.date, contactInfo: formState.contactInfo}
             const { data } = await addEvent({
-                variables: { ...formState },
+                variables: { ...info },
             });
         
-        Auth.login(data.login.token);
+        // Auth.login(data.login.token);
         } catch (e) {
             console.error(e);
         }

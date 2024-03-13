@@ -1,25 +1,29 @@
 // review Projects from tutor video
 import React, { useState, useEffect } from 'react';
 import Form from '../../components/eventForm/eventForm';
-import Event from '../../components/event/event'; // Assuming you have an Event component to display individual events
-import { getAllEvents } from 'api'; // Function to fetch all events
+// import Event from '../../components/event/event'; // Assuming you have an Event component to display individual events
+// import { getAllEvents } from '../../utils/API'; // Function to fetch all events
 
-import { useMutation } from '@apollo/client';
-import { ADD_EVENT } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_EVENTS } from '../../utils/queries';
 
 const Events = () => {
-    const [events, setEvents] = useState([]);
+    // const [events, setEvents] = useState([]);
+    const {data, loading} = useQuery(QUERY_EVENTS);
+    const events = data?.events||[]
 
-    useEffect(() => {
-        // Fetch all events when the component mounts
-        const fetchEvents = async () => {
-            const allEvents = await getAllEvents();
-            setEvents(allEvents);
-        };
+    // useEffect(() => {
+    //     // Fetch all events when the component mounts
+    //     const fetchEvents = async () => {
+    //         const response = await getAllEvents();
+    //         const allEvents = await response.json()
+    //         console.log(allEvents)
+    //         setEvents(allEvents);
+    //     };
 
-        fetchEvents();
-    }, []);
-
+    //     fetchEvents();
+    // }, []);
+    console.log(events)
     return (
         <section className='fullPage'>
             <Form />
