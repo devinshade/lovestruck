@@ -21,10 +21,7 @@ const resolvers = {
             
             console.log("events:", user.events)
 
-            return {
-                user, 
-                events
-            };
+            return { user, events }
         },
         events: async () => {
             const allEvents = await Event.find({}).populate('attendees');
@@ -45,7 +42,7 @@ const resolvers = {
             const singleEvent = await Event.findById(eventId)
 
             if (!singleEvent) {
-                throw new Error ('Error not found')
+                throw new Error ('Event not found')
             }
 
             return singleEvent;
@@ -63,10 +60,24 @@ const resolvers = {
 
             return { token, user }
         },
-        addEvent: async (parent, {hosts, title, description, date, location, contactInfo}) => {
-            const event = await Event.create({hosts, title, description, date, location, contactInfo})
-
-            return event
+        addEvent: async (parent, { hosts, title, description, date, location, contactInfo }, context) => {
+            console.log("Hello frontEnd")
+            const { user } = context;
+            if (!user) {
+                throw new Error('User not authenticated');
+            }
+            console.log(user)
+            const event = await Event.create({
+                hosts,
+                title,
+                description,
+                date,
+                location,
+                contactInfo,
+                creator: user._id
+            });
+            console.log("creator", event.creator)
+            return event;
         },
         deleteEvent: async (parent, { eventId }) => {
             const event = await Event.deleteOne({ _id: eventId })
@@ -78,7 +89,7 @@ const resolvers = {
             return "Success!"
         },
         rsvpEvent: async (parent, { eventId, userId, attendee }) => {
-            const event = await Event.findOneAndUpdate(eventId);
+            const event = await Event.findOneAndUpdate(eventId, { new: true });
             
             if (!event) {
                 throw new Error("Event not found");
@@ -103,7 +114,7 @@ const resolvers = {
             return event;
         },
         updateAttendee: async (parents, { eventId, attendeeId, name }) => {
-            const event = Event.findById(eventId);
+            const event = await Event.findById(eventId);
             
             if (!event) {
                 throw new Error('Event not found');
@@ -115,7 +126,7 @@ const resolvers = {
 
             await event.save();
 
-            return attendeeUpdate;
+            return updateAttendee;
         },
         removeAttendee: async (parent, { eventId, attendeeId }) => {
             const event = await Event.findById(eventId);
