@@ -7,6 +7,16 @@ export const QUERY_ME = gql`
       firstName
       lastName
       email
+      events {
+        _id
+        firstName
+        lastName
+        title
+        location
+        date
+        description
+        contactInfo
+      }
     }
   }
 `;
