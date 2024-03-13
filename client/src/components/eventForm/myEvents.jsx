@@ -12,7 +12,7 @@ const MyEvents = () => {
     setUserData(data?.me);
   }, [data]);
 
-  const eventId = userData?.events?.find(event => event.creator === userData._id)?._id;
+  // const eventId = userData.filter(event => event.creator === userData.id)?.id;
 
   if (!userData) {
     return <p>Loading...</p>;
