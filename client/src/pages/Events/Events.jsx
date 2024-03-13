@@ -1,7 +1,6 @@
-// review Projects from tutor video
 import React, { useState, useEffect } from 'react';
 
-// import Event from '../../components/event/event'; // Assuming you have an Event component to display individual events
+import Event from '../../components/event/event';
 // import { getAllEvents } from '../../utils/API'; // Function to fetch all events
 
 import { useQuery } from '@apollo/client';
@@ -19,14 +18,7 @@ const Events = () => {
 
     return (
         <section className='fullPage'>
-            {/* <h2>All Events:</h2>
-            {loading ? (
-                <p>Loading...</p>
-            ) : events.length > 0 ? (
-                events.map((event) => <Event key={event.id} event={event} />)
-            ) : (
-                <p>No events available.</p>
-            )} */}
+            {events ? events.map( event => <Event event={event} />) : <h1>No events found! In the whole wide world!</h1>}
         </section>
     );
 };
