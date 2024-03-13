@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './GiftPot.css'
+import DonationForm from './components/DonationForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
         path: "/events",
         element: <Events />,
       },
-      // {
-      //   path: '/wedding',
-      //   element: <Wedding />
-      // },
+      {
+        path: '/donate',
+        element: <DonationForm />
+      },
       {
         path: '/login',
         element: <Login />
