@@ -36,3 +36,18 @@ export const getAllEvents = (token) => {
     },
   });
 };
+
+export const createEvent = (eventData, token) => {
+  if (!token) {
+    throw new Error('Token is required for this request');
+  }
+  
+  return fetch('/api/events', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(eventData),
+  });
+};

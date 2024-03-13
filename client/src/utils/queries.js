@@ -4,7 +4,8 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
       email
     }
   }
@@ -18,7 +19,9 @@ export const QUERY_EVENTS = gql`
       location
       date
       attendees {
-        name
+        _id
+        firstName
+        lastName
       }
     }
   }
@@ -33,7 +36,9 @@ export const QUERY_SINGLE_EVENT = gql`
     location
     date
     attendees {
-      name
+      _id
+      firstName
+      lastName
     }
     }
   }
@@ -73,7 +78,9 @@ export const EVENT = gql`
       location
       date
       attendees {
-        name
+        _id
+        firstName
+        lastName
       }
     }
   }
@@ -84,7 +91,9 @@ query GetRSVPs($userId: ID!) {
   event(userId: $userId) {
     _id
     attendees {
-      name
+      _id
+      firstName
+      lastName
     }
   }
 }
