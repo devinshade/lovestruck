@@ -83,7 +83,7 @@ const resolvers = {
                 contactInfo,
                 creator: user._id
             });
-            console.log("creator", event.creator)
+            
             return event;
         },
         deleteEvent: async (parent, { eventId }) => {

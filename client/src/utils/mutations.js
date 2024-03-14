@@ -26,23 +26,6 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-<<<<<<< HEAD
-mutation AddEvent($hosts: String!, $title: String!, $location: String!, $date: String!, $description: String, $contactInfo: String!) {
-  addEvent(hosts: $hosts, title: $title, location: $location, date: $date, description: $description, contactInfo: $contactInfo) {
-    hosts
-    title
-    location
-    date
-    contactInfo
-    attendees {
-      _id
-      firstName
-      lastName
-      plusOne {
-        firstName
-        lastName
-      }
-=======
   mutation AddEvent($firstName: String!, $lastName: String!, $title: String!, $location: String!, $date: String!, $description: String, $contactInfo: String!) {
     addEvent(firstName: $firstName, lastName: $lastName, title: $title, location: $location, date: $date, description: $description, contactInfo: $contactInfo) {
       firstName
@@ -53,7 +36,6 @@ mutation AddEvent($hosts: String!, $title: String!, $location: String!, $date: S
       description
       location
       contactInfo
->>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 `;
@@ -69,13 +51,6 @@ mutation RsvpEvent($eventId: ID!, $mainAttendee: AttendeeDetails!, $plusOne: Plu
     attendees {
       firstName
       lastName
-<<<<<<< HEAD
-      plusOne {
-        firstName
-        astName
-      }
-=======
->>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 }
@@ -92,13 +67,6 @@ mutation REMOVE_ATTENDEE($eventId: ID!, $attendeeId: ID!) {
     attendees {
       firstName
       lastName
-<<<<<<< HEAD
-      plusOne {
-        firstName
-        lastName
-      }
-=======
->>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 }
