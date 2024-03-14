@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
 import App from './App.jsx'
+
 import Home from './pages/Home/Home.jsx'
 import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
 import Oops from './pages/Oops/oops.jsx';
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import './main.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './GiftPot.css'
+
 import DonationForm from './components/DonationForm.jsx'
 
 const router = createBrowserRouter([

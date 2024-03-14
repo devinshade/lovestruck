@@ -4,8 +4,19 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
       email
+      events {
+        _id
+        firstName
+        lastName
+        title
+        location
+        date
+        description
+        contactInfo
+      }
     }
   }
 `;
@@ -13,23 +24,33 @@ export const QUERY_ME = gql`
 export const QUERY_EVENTS = gql`
   query getEvents {
     events {
-      _id
-      hosts
+      firstName
+      lastName
+      title
       location
+      description
       date
+      contactInfo
       attendees {
+<<<<<<< HEAD
         firstName
         lastName
         plusOne {
           firstName
           lastName
         }
+=======
+        _id
+        firstName
+        lastName
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
       }
     }
   }
 `;
 
 export const QUERY_SINGLE_EVENT = gql`
+<<<<<<< HEAD
   query getSingleEvent($eventId: ID!) {
     event(eventId: $eventId) {
       _id
@@ -45,6 +66,21 @@ export const QUERY_SINGLE_EVENT = gql`
           lastName
         }
       }
+=======
+  query getSingleEvent($eventtId: ID!){
+  event(eventId: $eventId) {
+    _id
+    firstName
+    lastName
+    description
+    location
+    date
+    attendees {
+      _id
+      firstName
+      lastName
+    }
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 `;
@@ -87,17 +123,21 @@ export const EVENT = gql`
   query {
     events {
       _id
-      hosts
+      firstName
+      lastName
       location
       date
       attendees {
         _id
         firstName
         lastName
+<<<<<<< HEAD
         plusOne {
           firstName
           lastName
         }
+=======
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
       }
     }
   }
@@ -111,10 +151,13 @@ query GetRSVPs($userId: ID!) {
       _id
       firstName
       lastName
+<<<<<<< HEAD
       plusOne {
         firstName
         lastName
       }
+=======
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 }

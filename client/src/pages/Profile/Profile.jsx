@@ -1,34 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import MyEvents from '../../components/eventForm/myEvents';
+
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 const Profile = () => {
+  const { data, loading } = useQuery(QUERY_ME);
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    if (data && data.me) { // Make sure data and data.me exist before updating userData
+      setUserData(data.me);
+    }
+  }, [data]);
+
+  console.log(data);
+
+  const [ showMyWedding, setShowMyWedding] = useState(true);
+
+  const toggleDisplay = () => {
+    setShowMyWedding(prevState => !prevState);
+  };
+
   return (<section className='fullPage'>
 <div className='row w-100 p-5'>
   <div className='col-1'>
       <img className="col-12 custom-border" src="/src/assets/images/PFPPlaceholder.png" alt="PLACEHOLDER"/>
       <div className='text-center border-top border-bottom my-3 var-text-blue5'>
-        <h3>username</h3>
+        <h3>{ userData.firstName } { userData.lastName }</h3>
       </div>
-      <div className='text-center'>
-        <button className="custom-btn header-btns">
-          This button swaps
-          <br />
-          the pink div between
-          My Wedding and Events
+      <div>
+        <button className="custom-btn header-btns" onClick={toggleDisplay} style={{ width: '90%' }}>
+          {showMyWedding ? "Show Other Weddings" : "Show My Wedding"}
         </button>
       </div>
     </div>
-    <div className='col-6 bg-pink'>
+    <div className='col-6 var-bg-blue2 custom-border var-text-light'>
+      {showMyWedding ? (
       <div className='m-5'>
         <h1 className='text-center custom-underline'>My Wedding</h1>
-        <h2>
-          HERE DISPLAYS ALL OF THE EVENT INFO CREATED THROUGH THE EVENT FORM 
-          <br /><br />
-          IF THE USER HAS NOT YET CREATED AN EVENT, DISPLAY THE EVENT CREATION FORM
-        </h2>
+        <div>
+          <MyEvents />
+        </div>
       </div>
+      ) : (
+        <div className='text-center pt-5'>
+          <h1>FUTURE DEV</h1>
+          <h2>Will display all weddings the current user has RSVPd to</h2>
+        </div>
+      )}
     </div>
 
     <div className="col-4 mx-2 custom-bg-light" id="img-container">

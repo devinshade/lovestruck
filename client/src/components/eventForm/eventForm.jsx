@@ -2,18 +2,17 @@ import { useState } from 'react';
 import './style.css';
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
-import Auth from '../../utils/auth';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-const EventForm = (props) => {
+const EventForm = () => {
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
-        event: '',
+        title: '',
         description: '',
         location: '', 
         date: '',
@@ -23,7 +22,6 @@ const EventForm = (props) => {
     const [addEvent, { error, data }] = useMutation(ADD_EVENT);
 
     const handleInputChange = (e) => {
-        // Getting the value and name of the input which triggered the change
         const { name, value } = e.target
 
         setFormState({
@@ -34,32 +32,29 @@ const EventForm = (props) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log(formState);
+
         try {
-            const info = {hosts: formState.firstName + ' ' + formState.lastName, title: formState.event, description: formState.description, location: formState.location, date: formState.date, contactInfo: formState.contactInfo}
-            const { data } = await addEvent({
-                variables: { ...info },
-            });
-        
-        // Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
+            const { data } = await addEvent({ variables: { ...formState } });
+
+        } catch (error) {
+            console.error(error);
         }
 
         setFormState({
             firstName: '',
             lastName: '',
-            event: '',
+            title: '',
             description: '',
-            location: '', 
+            location: '',
             date: '',
             contactInfo: ''
-        })
-    }
+        });
+    };
+    
     return (
         <div className="container text-center">
-            <h1>Welcome {formState.firstName}!</h1>
-            <Card className="container text-center" style={{ width: '44rem' }}>
+            <h1>Create your wedding now!</h1>
+            <Card className="container text-center " style={{ width: '100%' }}>
                 <Form onSubmit={handleFormSubmit}>
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridFirstName">
@@ -85,11 +80,11 @@ const EventForm = (props) => {
                         </Form.Group>
                     </Row>
             
-                    <Form.Group className="mb-3" controlId="formGridEventName">
+                    <Form.Group className="mb-3" controlId="formGridtitle">
                         <Form.Label>Event Name</Form.Label>
                         <Form.Control
-                        value={formState.event}
-                        name='event'
+                        value={formState.title}
+                        name='title'
                         onChange={handleInputChange}
                         type='text'
                         placeholder='Event Name'

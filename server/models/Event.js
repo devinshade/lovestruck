@@ -7,7 +7,12 @@ const { Attendee } = require('./Attendee')
 // if this is similar to handlebars - try implementing on the pages themselves
 
 const eventSchema = new Schema({
-    hosts: {
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    lastName: {
         type: String,
         required: true,
         trim: true
