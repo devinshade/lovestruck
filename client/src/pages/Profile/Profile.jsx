@@ -47,8 +47,9 @@ const Profile = () => {
         </div>
       </div>
       ) : (
-        <div>
-          IT WORKS
+        <div className='text-center pt-5'>
+          <h1>FUTURE DEV</h1>
+          <h2>Will display all weddings the current user has RSVPd to</h2>
         </div>
       )}
     </div>
