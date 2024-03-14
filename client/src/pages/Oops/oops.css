@@ -1,0 +1,20 @@
+.msg {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    text-decoration: none;
+    color: black;
+}
+
+.button:hover {
+    text-decoration: none;
+    color: rosybrown
+}

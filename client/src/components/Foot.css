@@ -1,0 +1,17 @@
+footer {
+  background-color: var(--blue2);
+  color: var(--blue2);
+}
+
+h5 {
+  background-color: var(--blue2);
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--light);
+}
+
+.footer-link:hover {
+  color: hotpink;
+}
