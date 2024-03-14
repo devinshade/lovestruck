@@ -32,15 +32,41 @@ export const QUERY_EVENTS = gql`
       date
       contactInfo
       attendees {
+<<<<<<< HEAD
+        firstName
+        lastName
+        plusOne {
+          firstName
+          lastName
+        }
+=======
         _id
         firstName
         lastName
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
       }
     }
   }
 `;
 
 export const QUERY_SINGLE_EVENT = gql`
+<<<<<<< HEAD
+  query getSingleEvent($eventId: ID!) {
+    event(eventId: $eventId) {
+      _id
+      hosts
+      description
+      location
+      date
+      attendees {
+        firstName
+        lastName
+        plusOne {
+          firstName
+          lastName
+        }
+      }
+=======
   query getSingleEvent($eventtId: ID!){
   event(eventId: $eventId) {
     _id
@@ -54,6 +80,7 @@ export const QUERY_SINGLE_EVENT = gql`
       firstName
       lastName
     }
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 `;
@@ -61,7 +88,15 @@ export const QUERY_SINGLE_EVENT = gql`
 export const NUMBER_OF_ATTENDEES = gql`
   query GET_NUMBER_OF_ATTENDEES($eventId: ID!) {
    getNumberOfAttendees(eventId: $eventId) {
-    _id
+    attendees {
+      _id
+      firstName
+      lastName
+      plusOne {
+        firstName
+        lastName
+      }
+    }
    }
   }
 `
@@ -96,6 +131,13 @@ export const EVENT = gql`
         _id
         firstName
         lastName
+<<<<<<< HEAD
+        plusOne {
+          firstName
+          lastName
+        }
+=======
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
       }
     }
   }
@@ -109,6 +151,13 @@ query GetRSVPs($userId: ID!) {
       _id
       firstName
       lastName
+<<<<<<< HEAD
+      plusOne {
+        firstName
+        lastName
+      }
+=======
+>>>>>>> 690a39c8cc9c680507bdced09130b9bbf8726523
     }
   }
 }
