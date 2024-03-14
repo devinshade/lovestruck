@@ -12,7 +12,7 @@ const Profile = () => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    if (data && data.me) { // Make sure data and data.me exist before updating userData
+    if (data && data.me) {
       setUserData(data.me);
     }
   }, [data]);
