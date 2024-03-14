@@ -15,7 +15,7 @@ const Home = () => {
             <button className="custom-btn" id="main-login-btns">Sign Up</button>
           </a>
           <a className='text-decoration-none' href="/login">
-            <button className="custom-btn " id="main-login-btns">Login</button>
+            <button className="custom-btn" id="main-login-btns">Login</button>
           </a>
         </div>
       </div>
