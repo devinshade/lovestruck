@@ -32,7 +32,6 @@ const typeDefs = `
         title: String
         location: String
         date: String
-        creator: User
         description: String
         contactInfo: String
         creator: User
