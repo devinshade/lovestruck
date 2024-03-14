@@ -41,19 +41,19 @@ export const QUERY_EVENTS = gql`
 `;
 
 export const QUERY_SINGLE_EVENT = gql`
-  query getSingleEvent($eventtId: ID!){
-  event(eventId: $eventId) {
-    _id
-    firstName
-    lastName
-    description
-    location
-    date
-    attendees {
+  query getSingleEvent($eventId: ID!) {
+    event(eventId: $eventId) {
       _id
       firstName
       lastName
-    }
+      description
+      location
+      date
+      attendees {
+        _id
+        firstName
+        lastName
+      }
     }
   }
 `;
