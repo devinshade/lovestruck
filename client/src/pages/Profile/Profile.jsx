@@ -26,15 +26,15 @@ const Profile = () => {
   };
 
   return (<section className='fullPage'>
-<div className='row w-100 p-5'>
+<div className='row w-100 p-5 justify-content-between'>
   <div className='col-1'>
       <img className="col-12 custom-border" src="/src/assets/images/PFPPlaceholder.png" alt="PLACEHOLDER"/>
       <div className='text-center border-top border-bottom my-3 var-text-blue5'>
         <h3>{ userData.firstName } { userData.lastName }</h3>
       </div>
       <div>
-        <button className="custom-btn header-btns" onClick={toggleDisplay} style={{ width: '90%' }}>
-          {showMyWedding ? "Show Other Weddings" : "Show My Wedding"}
+        <button className="custom-btn header-btns" onClick={toggleDisplay} style={{ width: '90%', fontSize: '18px' }}>
+          {showMyWedding ? "Other Weddings" : "My Wedding"}
         </button>
       </div>
     </div>
@@ -48,13 +48,14 @@ const Profile = () => {
       </div>
       ) : (
         <div className='text-center pt-5'>
-          <h1>FUTURE DEV</h1>
+          <h1 className='text-center custom-underline'>My RSVPs</h1>
+          <br/>
           <h2>Will display all weddings the current user has RSVPd to</h2>
         </div>
       )}
     </div>
 
-    <div className="col-4 mx-2 custom-bg-light" id="img-container">
+    <div className="col-4 mx-2 my-auto custom-bg-light" id="img-container">
           <Calendar className="custom-calendar col-12 custom-border p-1"/>
         </div>
       </div>
