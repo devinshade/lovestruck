@@ -17,8 +17,6 @@ const Profile = () => {
     }
   }, [data]);
 
-  console.log(data);
-
   const [ showMyWedding, setShowMyWedding] = useState(true);
 
   const toggleDisplay = () => {

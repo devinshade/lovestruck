@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import Event from '../../components/event/event';
-// import { getAllEvents } from '../../utils/API'; // Function to fetch all events
 
 import { useQuery } from '@apollo/client';
 import { QUERY_EVENTS } from '../../utils/queries';
@@ -19,7 +18,7 @@ const Events = () => {
     return (
         <section className='fullPage m-5'>
             <div className='row justify-center'>
-                {events ? events.map( event => <Event event={event} />) : <h1>No events found! In the whole wide world!</h1>}
+                {events.length > 0 ? events.map( event => <Event key={event._id} event={event} />) : <h1>No events found! In the whole wide world!</h1>}
             </div>
         </section>
     );

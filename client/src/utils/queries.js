@@ -24,6 +24,7 @@ export const QUERY_ME = gql`
 export const QUERY_EVENTS = gql`
   query getEvents {
     events {
+      _id
       firstName
       lastName
       title
@@ -31,6 +32,9 @@ export const QUERY_EVENTS = gql`
       description
       date
       contactInfo
+      creator {
+        _id
+      }
       attendees {
         _id
         firstName
