@@ -88,3 +88,18 @@ export const DELETE_EVENT = gql `
     }
   }
 `
+
+export const UPDATE_EVENT = gql`
+    mutation UpdateEvent($eventId: ID!, $input: EventInput!) {
+        updateEvent(eventId: $eventId, input: $input) {
+            _id
+            firstName
+            lastName
+            title
+            location
+            date
+            description
+            contactInfo
+        }
+    }
+`;

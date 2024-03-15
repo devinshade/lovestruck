@@ -8,6 +8,7 @@ import Events from './pages/Events/allEvents.jsx'
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
+import UpdateEvent from './pages/updateEvent/updateEvent.jsx'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile/>
+      },
+      {
+        path: "/updateEvents/:eventId",
+        element: <UpdateEvent />
       }
     ]
   }

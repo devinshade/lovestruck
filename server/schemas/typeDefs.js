@@ -54,6 +54,16 @@ const typeDefs = `
         lastName: String
     }
 
+    input EventInput {
+        firstName: String
+        lastName: String
+        title: String
+        location: String
+        date: String
+        description: String
+        contactInfo: String
+    }
+
     type Query {
         me: User
         user: User
@@ -67,6 +77,7 @@ const typeDefs = `
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addEvent(firstName: String!, lastName: String!, title: String!, location: String!, date: String!, description: String, contactInfo: String!): Event
         deleteEvent(eventId: ID!): Event
+        updateEvent(eventId: ID!, input: EventInput!): Event
         rsvpEvent(eventId: ID!, mainAttendee: AttendeeDetails!, plusOne: PlusOneDetails): Event
         updateAttendee(eventId: ID!, attendeeId: ID!, name: String!): Attendee
         removeAttendee(eventId: ID!, attendeeId: ID!): Event

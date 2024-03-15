@@ -95,6 +95,13 @@ const resolvers = {
 
             return "Success!"
         },
+        updateEvent: async (parent, { eventId, input }) => {
+            const updatedEvent = await Event.findByIdAndUpdate(
+                { _id: eventId }, 
+                input, 
+                { new: true });
+            return updatedEvent;
+        },
         rsvpEvent: async (parent, { eventId, userId, attendee }) => {
             const event = await Event.findOneAndUpdate(eventId);
             
@@ -121,7 +128,7 @@ const resolvers = {
         
             return event;
         },
-        updateAttendee: async (parents, { eventId, attendeeId, name }) => {
+        updateAttendee: async (parent, { eventId, attendeeId, name }) => {
             const event = await Event.findById(eventId);
             
             if (!event) {

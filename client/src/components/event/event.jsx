@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useMutation, useQuery } from '@apollo/client';
 import { DELETE_EVENT } from '../../utils/mutations';
@@ -22,9 +23,6 @@ const Event = ({ event }) => {
         }
     }
 
-    console.log("Creator Id:", event.creator)
-    console.log("Logged In User:", Auth.loggedIn())
-
     return (
     <div className='m-5 row'>
         <div className="custom-border var-bg-blue2 col-md-8 flex-wrap mx-auto d-flex p-4">
@@ -42,6 +40,9 @@ const Event = ({ event }) => {
                     <button className="custom-btn p-4 custom-text-md">
                         RSVP today!
                     </button>
+                    <Link to={{ pathname: `/updateEvents/${event._id}`, eventInfo: event }}>
+                        <button className="custom-btn p-4 custom-text-md">Update</button>
+                    </Link>
             </div>
         </div>
     </div>

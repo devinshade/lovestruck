@@ -18,7 +18,7 @@ const Events = () => {
     return (
         <section className='fullPage m-5'>
             <div className='row justify-center'>
-                {events ? events.map( event => <Event key={event._id} event={event} />) : <h1>No events found! In the whole wide world!</h1>}
+                {events.length > 0 ? events.map( event => <Event key={event._id} event={event} />) : <h1>No events found! In the whole wide world!</h1>}
             </div>
         </section>
     );
