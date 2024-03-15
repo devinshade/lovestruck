@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
-const dateFormat = require('../utils/dateFormat')
 const { Attendee } = require('./Attendee')
-
-// todo: Devin to add dateFormat - reference MERN activity 16
-// if this is similar to handlebars - try implementing on the pages themselves
+const dayjs = require('dayjs');
 
 const eventSchema = new Schema({
     firstName: {
@@ -27,16 +24,18 @@ const eventSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
+    },
     location: {
         type: String,
         required: true,
     },
     date: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now,
+        get: function(date) {
+            return dayjs(date).format('MMMM DD, YYYY');
+        }
     },
     contactInfo: {
         type: String,
