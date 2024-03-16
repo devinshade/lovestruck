@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { UPDATE_EVENT } from '../../utils/mutations'
 import { Button, Col, Form, Row, Card } from 'react-bootstrap'
 
-const UpdateEvent = ({ eventInfo }) => {
+const UpdateEvent = () => {
+    const { eventId } = useParams();
     const [updateEvent] = useMutation(UPDATE_EVENT);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -16,28 +18,36 @@ const UpdateEvent = ({ eventInfo }) => {
     });
 
     useEffect(() => {
-        if (eventInfo) {
+        if (eventId) {
             setFormData({
-                firstName: eventInfo.firstName || '',
-                lastName: eventInfo.lastName || '',
-                title: eventInfo.title || '',
-                location: eventInfo.location || '',
-                description: eventInfo.description || '',
-                date: eventInfo.date || '',
-                contactInfo: eventInfo.contactInfo || ''
+                firstName: eventId.firstName || '',
+                lastName: eventId.lastName || '',
+                title: eventId.title || '',
+                location: eventId.location || '',
+                description: eventId.description || '',
+                date: eventId.date || '',
+                contactInfo: eventId.contactInfo || ''
             });
         }
-    }, [eventInfo]);
+    }, [eventId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await updateEvent({ variables: { eventId: eventInfo.id, ...formData } });
-            window.location.href = "./events"; // Corrected 'windows' to 'window'
+            await updateEvent({ variables: { eventId: eventId._id, ...formData } });
+            window.location.href = "../events";
         } catch (error) {
             console.error('Error updating event:', error);
         }
     }
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
 
     return (
         <div className="container text-center">
@@ -48,7 +58,7 @@ const UpdateEvent = ({ eventInfo }) => {
                         <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
-                                value={eventInfo.firstName}
+                                value={eventId.firstName}
                                 name="firstName"
                                 onChange={handleInputChange}
                                 type="text"
@@ -59,7 +69,7 @@ const UpdateEvent = ({ eventInfo }) => {
                         <Form.Group as={Col} controlId="formGridLastName">
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
-                                value={eventInfo.lastName}
+                                value={eventId.lastName}
                                 name="lastName"
                                 onChange={handleInputChange}
                                 type="text"
@@ -71,7 +81,7 @@ const UpdateEvent = ({ eventInfo }) => {
                     <Form.Group className="mb-3" controlId="formGridtitle">
                         <Form.Label>Event Name</Form.Label>
                         <Form.Control
-                            value={eventInfo.title}
+                            value={eventId.title}
                             name='title'
                             onChange={handleInputChange}
                             type='text'
@@ -82,7 +92,7 @@ const UpdateEvent = ({ eventInfo }) => {
                     <Form.Group className="mb-3" controlId="formGridDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control
-                            value={eventInfo.description}
+                            value={eventId.description}
                             name='description'
                             onChange={handleInputChange}
                             type='text'
@@ -93,7 +103,7 @@ const UpdateEvent = ({ eventInfo }) => {
                     <Form.Group className="mb-3" controlId="formGridLocation">
                         <Form.Label>Location</Form.Label>
                         <Form.Control
-                            value={eventInfo.location}
+                            value={eventId.location}
                             name='location'
                             onChange={handleInputChange}
                             type='text'
@@ -105,7 +115,7 @@ const UpdateEvent = ({ eventInfo }) => {
                         <Form.Group as={Col} controlId="formGridDate">
                             <Form.Label>Date</Form.Label>
                             <Form.Control
-                                value={eventInfo.date}
+                                value={eventId.date}
                                 name='date'
                                 onChange={handleInputChange}
                                 type='date'
@@ -116,7 +126,7 @@ const UpdateEvent = ({ eventInfo }) => {
                         <Form.Group as={Col} controlId="formGridContactInfo">
                             <Form.Label>Contact Info</Form.Label>
                             <Form.Control
-                                value={eventInfo.contactInfo}
+                                value={eventId.contactInfo}
                                 name='contactInfo'
                                 onChange={handleInputChange}
                                 type='tel'

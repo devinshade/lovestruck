@@ -9,6 +9,7 @@ import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile/Profile.jsx'
 import UpdateEvent from './pages/updateEvent/updateEvent.jsx'
+import RSVP from './pages/RSVP/rsvp.jsx'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
       {
         path: "/updateEvents/:eventId",
         element: <UpdateEvent />
-      }
+      },
+      {
+        path: "/rsvp/:eventId",
+        element: <RSVP />
+      },
     ]
   }
 ]);

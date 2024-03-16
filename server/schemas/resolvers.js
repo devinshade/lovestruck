@@ -102,7 +102,7 @@ const resolvers = {
                 { new: true });
             return updatedEvent;
         },
-        rsvpEvent: async (parent, { eventId, userId, attendee }) => {
+        rsvpEvent: async (parent, { eventId, mainAttendee }, context) => {
             const event = await Event.findOneAndUpdate(eventId);
             
             if (!event) {
@@ -113,11 +113,11 @@ const resolvers = {
                 userId: context.user._id,
                 firstName: mainAttendee.firstName,
                 lastName: mainAttendee.lastName,
-                
-                plusOne: plusOne ? {
-                    firstName: plusOne.firstName,
-                    lastName: plusOne.lastName
-                } : null
+
+                // plusOne: plusOne ? {
+                //     firstName: plusOne.firstName,
+                //     lastName: plusOne.lastName,
+                // } : null
             });
             
             event.attendees.push(mainAttendeeRsvp);
