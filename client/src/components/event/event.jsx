@@ -23,6 +23,12 @@ const Event = ({ event }) => {
         }
     }
 
+    const handleRSVP = () => {
+        window.location.href = `./rsvp/${event._id}`
+    }
+
+    console.log("the event:", event)
+
     return (
     <div className='m-5 row'>
         <div className="custom-border var-bg-blue2 col-md-8 flex-wrap mx-auto d-flex p-4">
@@ -37,7 +43,7 @@ const Event = ({ event }) => {
                     <button className="custom-btn p-4 custom-text-md" onClick={() => handleDelete(event._id)}>
                          Delete
                     </button>
-                    <button className="custom-btn p-4 custom-text-md">
+                    <button className="custom-btn p-4 custom-text-md" onClick={handleRSVP}>
                         RSVP today!
                     </button>
                     <Link to={{ pathname: `/updateEvents/${event._id}`, eventInfo: event }}>

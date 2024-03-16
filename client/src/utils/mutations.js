@@ -41,16 +41,23 @@ export const ADD_EVENT = gql`
 `;
 
 export const RSVP_EVENT = gql`
-mutation RsvpEvent($eventId: ID!, $mainAttendee: AttendeeDetails!, $plusOne: PlusOneDetails) {
-  rsvpEvent(eventId: $eventId, mainAttendee: $mainAttendee, plusOne: $plusOne) {
+mutation RsvpEvent($eventId: ID!, $mainAttendee: AttendeeDetails!) {
+  rsvpEvent(eventId: $eventId, mainAttendee: $mainAttendee) {
     _id
-    firstName
     lastName
+    title
     location
     date
+    description
+    location
+    contactInfo
     attendees {
       firstName
       lastName
+      plusOne {
+        firstName
+        lastName
+      }
     }
   }
 }
