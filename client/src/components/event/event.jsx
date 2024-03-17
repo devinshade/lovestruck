@@ -52,7 +52,7 @@ const Event = ({ event }) => {
                             <button className="custom-btn p-4 custom-text-md" onClick={() => handleDelete(event._id)}>
                                 Delete
                             </button>
-                            <Link to={{ pathname: `/updateEvents/${event._id}`, eventInfo: event }}>
+                            <Link to={{ pathname: `/updateEvents/${event._id}`}}>
                                 <button className="custom-btn p-4 custom-text-md">Update</button>
                             </Link>
                         </>
