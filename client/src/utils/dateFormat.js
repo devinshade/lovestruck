@@ -15,13 +15,10 @@ const addDateSuffix = (date) => {
     }
   
     return dateStr;
-  };
+};
   
   // function to format a timestamp, accepts the timestamp and an `options` object as parameters
-  module.exports = (
-    timestamp,
-    { monthLength = 'short', dateSuffix = true } = {}
-  ) => {
+  const formatDate = (timestamp, { monthLength = 'short', dateSuffix = true } = {}) => {
     // create month object
     const months = {
       0: monthLength === 'short' ? 'Jan' : 'January',
@@ -46,23 +43,24 @@ const addDateSuffix = (date) => {
       : dateObj.getDate();
   
     const year = dateObj.getFullYear();
-    let hour =
-      dateObj.getHours() > 12
-        ? Math.floor(dateObj.getHours() - 12)
-        : dateObj.getHours();
+    // let hour =
+    //   dateObj.getHours() > 12
+    //     ? Math.floor(dateObj.getHours() - 12)
+    //     : dateObj.getHours();
   
-    // if hour is 0 (12:00am), change it to 12
-    if (hour === 0) {
-      hour = 12;
-    }
+    // // if hour is 0 (12:00am), change it to 12
+    // if (hour === 0) {
+    //   hour = 12;
+    // }
   
-    const minutes = (dateObj.getMinutes() < 10 ? '0' : '') + dateObj.getMinutes();
+    // const minutes = (dateObj.getMinutes() < 10 ? '0' : '') + dateObj.getMinutes();
   
-    // set `am` or `pm`
-    const periodOfDay = dateObj.getHours() >= 12 ? 'pm' : 'am';
+    // // set `am` or `pm`
+    // const periodOfDay = dateObj.getHours() >= 12 ? 'pm' : 'am';
   
-    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
+    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year}`;
   
     return formattedTimeStamp;
-  };
-  
+};
+
+export default formatDate;

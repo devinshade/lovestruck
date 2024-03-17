@@ -46,11 +46,12 @@ const startApolloServer = async () => {
     }))
 
     // this wont go into play until we create the dist folder with npm run build
+    console.log(process.env.NODE_ENV)
     if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, '../client/dist')));
 
         app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname), '../client/dist/index.html')
+            res.sendFile(path.join(__dirname, '../client/dist/index.html'))
         })
     }
 

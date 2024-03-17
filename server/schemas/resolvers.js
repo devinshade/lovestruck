@@ -95,7 +95,14 @@ const resolvers = {
 
             return "Success!"
         },
-        rsvpEvent: async (parent, { eventId, userId, attendee }) => {
+        updateEvent: async (parent, { eventId, input }) => {
+            const updatedEvent = await Event.findByIdAndUpdate(
+                { _id: eventId }, 
+                input, 
+                { new: true });
+            return updatedEvent;
+        },
+        rsvpEvent: async (parent, { eventId, mainAttendee }, context) => {
             const event = await Event.findOneAndUpdate(eventId);
             
             if (!event) {
@@ -106,11 +113,11 @@ const resolvers = {
                 userId: context.user._id,
                 firstName: mainAttendee.firstName,
                 lastName: mainAttendee.lastName,
-                
-                plusOne: plusOne ? {
-                    firstName: plusOne.firstName,
-                    lastName: plusOne.lastName
-                } : null
+
+                // plusOne: plusOne ? {
+                //     firstName: plusOne.firstName,
+                //     lastName: plusOne.lastName,
+                // } : null
             });
             
             event.attendees.push(mainAttendeeRsvp);
@@ -121,7 +128,7 @@ const resolvers = {
         
             return event;
         },
-        updateAttendee: async (parents, { eventId, attendeeId, name }) => {
+        updateAttendee: async (parent, { eventId, attendeeId, name }) => {
             const event = await Event.findById(eventId);
             
             if (!event) {
