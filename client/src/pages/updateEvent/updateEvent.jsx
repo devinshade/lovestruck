@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_SINGLE_EVENT } from '../../utils/queries'
 import { UPDATE_EVENT } from '../../utils/mutations'
 import { Button, Col, Form, Row, Card } from 'react-bootstrap'
 
 const UpdateEvent = () => {
     const { eventId } = useParams();
     const [updateEvent] = useMutation(UPDATE_EVENT);
+    const { data: eventData } = useQuery(QUERY_SINGLE_EVENT, {
+        variables: { eventId }
+    });
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -18,38 +23,35 @@ const UpdateEvent = () => {
     });
 
     useEffect(() => {
-        if (eventId) {
-            setFormData({
-                firstName: eventId.firstName || '',
-                lastName: eventId.lastName || '',
-                title: eventId.title || '',
-                location: eventId.location || '',
-                description: eventId.description || '',
-                date: eventId.date || '',
-                contactInfo: eventId.contactInfo || ''
-            });
+        if (eventData && eventData.getSingleEvent) {
+            const { firstName, lastName, title, location, description, date, contactInfo } = eventData.getSingleEvent;
+    
+            const parsedDate = new Date(date);
+    
+            const formattedDate = parsedDate.toISOString().split('T')[0];
+    
+            setFormData({ firstName, lastName, title, location, description, date: formattedDate, contactInfo });
         }
-    }, [eventId]);
+    }, [eventData]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await updateEvent({ variables: { eventId: eventId._id, ...formData } });
+            await updateEvent({ variables: { eventId: eventId, input: { ...formData } } });
             window.location.href = "../events";
         } catch (error) {
             console.error('Error updating event:', error);
         }
-    }
+    };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData({ ...formData, [name]: value });
     };
 
     return (
+        // Here Tyler
+        // dont know why it's displaying weird on the page here
         <div className="container text-center">
             <h1>Update your wedding now!</h1>
             <Card className="container text-center " style={{ width: '100%' }}>
@@ -58,7 +60,7 @@ const UpdateEvent = () => {
                         <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
-                                value={eventId.firstName}
+                                value={formData.firstName}
                                 name="firstName"
                                 onChange={handleInputChange}
                                 type="text"
@@ -69,7 +71,7 @@ const UpdateEvent = () => {
                         <Form.Group as={Col} controlId="formGridLastName">
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
-                                value={eventId.lastName}
+                                value={formData.lastName}
                                 name="lastName"
                                 onChange={handleInputChange}
                                 type="text"
@@ -81,7 +83,7 @@ const UpdateEvent = () => {
                     <Form.Group className="mb-3" controlId="formGridtitle">
                         <Form.Label>Event Name</Form.Label>
                         <Form.Control
-                            value={eventId.title}
+                            value={formData.title}
                             name='title'
                             onChange={handleInputChange}
                             type='text'
@@ -92,7 +94,7 @@ const UpdateEvent = () => {
                     <Form.Group className="mb-3" controlId="formGridDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control
-                            value={eventId.description}
+                            value={formData.description}
                             name='description'
                             onChange={handleInputChange}
                             type='text'
@@ -103,7 +105,7 @@ const UpdateEvent = () => {
                     <Form.Group className="mb-3" controlId="formGridLocation">
                         <Form.Label>Location</Form.Label>
                         <Form.Control
-                            value={eventId.location}
+                            value={formData.location}
                             name='location'
                             onChange={handleInputChange}
                             type='text'
@@ -115,7 +117,7 @@ const UpdateEvent = () => {
                         <Form.Group as={Col} controlId="formGridDate">
                             <Form.Label>Date</Form.Label>
                             <Form.Control
-                                value={eventId.date}
+                                value={formData.date}
                                 name='date'
                                 onChange={handleInputChange}
                                 type='date'
@@ -126,7 +128,7 @@ const UpdateEvent = () => {
                         <Form.Group as={Col} controlId="formGridContactInfo">
                             <Form.Label>Contact Info</Form.Label>
                             <Form.Control
-                                value={eventId.contactInfo}
+                                value={formData.contactInfo}
                                 name='contactInfo'
                                 onChange={handleInputChange}
                                 type='tel'

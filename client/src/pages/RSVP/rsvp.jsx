@@ -4,8 +4,6 @@ import { useMutation } from '@apollo/client';
 import { RSVP_EVENT } from '../../utils/mutations';
 import Form from 'react-bootstrap/Form';
 
-import Events from '../Events/allEvents'
-
 const RSVPForm = () => {
     const { eventId } = useParams(); 
     const [rsvpState, setRsvpState] = useState({firstName: '', lastName: ''})
