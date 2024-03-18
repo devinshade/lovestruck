@@ -24,7 +24,7 @@
 
  or visit link at
  <!-- TODO: insert deployed app -->
- [Lovestruck]("")
+ [Lovestruck](https://lovestruck.onrender.com/)
   
   ## Usage
   
@@ -35,8 +35,6 @@
         - Add a +1, view event details
         - Choose meal option 
         - Donate to the 'Honeypot'.
-        
-  View Demo Video: <!-- TODO: insert Demo Video (and screenshots?)-->
   
   ## License
   
@@ -71,11 +69,11 @@
   ## Coders
   
   GitHub:  
-  [Devin Shade]("https://github.com/devinshade")   
-  [Tyler Fruik]("https://github.com/tylerFruik")  
-  [Lizzie Bumpers]("https://github.com/laude-noctis")  
-  [Deborah Hariharan]("https://github.com/Luwylbab")   
-  [Luke Babers]("https://github.com/Luwylbab")  
+  [Devin Shade](https://github.com/devinshade)   
+  [Tyler Fruik](https://github.com/tylerFruik)  
+  [Lizzie Bumpers](https://github.com/laude-noctis)  
+  [Deborah Hariharan](https://github.com/Deboh12)   
+  [Luke Babers](https://github.com/Luwylbab)  
 
   ## Screenshot
   ![photo of webpage](./client/src/assets/images/screenshot.png)
