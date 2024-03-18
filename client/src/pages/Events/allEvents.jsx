@@ -14,7 +14,7 @@ const Events = () => {
             setEvents(data.events);
         }
     }, [data]);
-
+    console.log(events)
     return (
         <section className='fullPage m-5'>
             <div className='row justify-center'>

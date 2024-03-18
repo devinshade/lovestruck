@@ -24,8 +24,12 @@ const resolvers = {
             return { user, events }
         },
         events: async () => {
-            const allEvents = await Event.find({});
-            
+            const allEvents = await Event.find().populate;
+            allEvents.forEach(event => {
+                event.attendees.forEach(attendee => {
+                    console.log(attendee.firstName);
+                });
+            });
             return allEvents;
         },
         getNumberOfAttendees: async (parent, { eventId }) => {
@@ -103,7 +107,7 @@ const resolvers = {
             return updatedEvent;
         },
         rsvpEvent: async (parent, { eventId, mainAttendee }, context) => {
-            const event = await Event.findOneAndUpdate(eventId);
+            const event = await Event.findById(eventId);
             
             if (!event) {
                 throw new Error("Event not found");
@@ -113,13 +117,9 @@ const resolvers = {
                 userId: context.user._id,
                 firstName: mainAttendee.firstName,
                 lastName: mainAttendee.lastName,
-
-                // plusOne: plusOne ? {
-                //     firstName: plusOne.firstName,
-                //     lastName: plusOne.lastName,
-                // } : null
             });
-            
+
+            console.log(mainAttendeeRsvp)
             event.attendees.push(mainAttendeeRsvp);
 
             await event.save();
