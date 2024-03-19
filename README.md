@@ -28,13 +28,13 @@
   
   ## Usage
   
-  1. Sign up for an account and log in
-  2. Once signed in, you can: 
-      A. Create an event 
-      B. RSVP to an existing event
-        - Add a +1, view event details
-        - Choose meal option 
-        - Donate to the 'Honeypot'.
+  1. Sign up for an account and log in  
+  2. Once signed in, you can:  
+      A. Create an event   
+      B. RSVP to an existing event  
+        - Add a +1, view event details  
+        - Choose meal option   
+        - Donate to the 'Honeypot'.  
   
   ## License
   
