@@ -26,7 +26,7 @@ const Profile = () => {
   return (<section className='fullPage'>
 <div className='row w-100 p-5 justify-content-between'>
   <div className='col-1'>
-      <img className="col-12 custom-border" src="/src/assets/images/PFPPlaceholder.png" alt="PLACEHOLDER"/>
+      <img className="col-12 custom-border" src="images/PFPPlaceholder.png" alt="PLACEHOLDER"/>
       <div className='text-center border-top border-bottom my-3 var-text-blue5'>
         <h3>{ userData.firstName } { userData.lastName }</h3>
       </div>
