@@ -46,8 +46,8 @@ const Login = (props) => {
     <main className="fullPage container container-fluid mx-auto pt-5">
       <div className="row justify-center">
         <div className="col-3 text-center" id="img-container">
-          <img className="login-img custom-border" src="/src/assets/images/Photo3.png" alt="A couple getting married"/>
-          <img className="login-img custom-border" src="/src/assets/images/Photo4.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="./src/assets/images/Photo3.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="./src/assets/images/Photo4.png" alt="A couple getting married"/>
         </div>
         <div className="card col-5 custom-bg-light">
           <h4 className="card-header text-center custom-bg-blue5 var-text-light custom-text-lg p-3 mt-3">Login</h4>
@@ -104,8 +104,8 @@ const Login = (props) => {
           </div>
         </div>
         <div className="col-3 text-center" id="img-container">
-          <img className="login-img custom-border" src="/src/assets/images/Photo5.png" alt="A couple getting married"/>
-          <img className="login-img custom-border" src="/src/assets/images/Photo6.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="./src/assets/images/Photo5.png" alt="A couple getting married"/>
+          <img className="login-img custom-border" src="./src/assets/images/Photo6.png" alt="A couple getting married"/>
         </div>
       </div>
     </main>
