@@ -21,7 +21,7 @@ const Home = () => {
       </div>
       <div className='row m-2'>
         <div className="col-3 mx-2 custom-bg-light" id="img-container">
-          <img className="main-menu-img custom-border p-1" src="/src/assets/images/Photo1.png" alt="A couple getting married"/>
+          <img className="main-menu-img custom-border p-1" src="./src/assets/images/Photo1.png" alt="A couple getting married"/>
         </div>
         <div className="custom-border col-8 custom-bg-blue3 mx-2 p-4">
           <h4 className="var-text-light custom-text-lg custom-underline">About Us</h4>
@@ -43,7 +43,7 @@ const Home = () => {
           </p>
         </div>
         <div className="col-3 mx-2  custom-bg-light" id="img-container">
-          <img className="main-menu-img custom-border p-1" src="/src/assets/images/Photo2.png" alt="A couple getting married"/>
+          <img className="main-menu-img custom-border p-1" src="./src/assets/images/Photo2.png" alt="A couple getting married"/>
         </div>
       </div>
     </section>
