@@ -2,18 +2,6 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 const Event = require('./Event')
 
-// for future dev
-// const plusOneSchema = new Schema({
-//     firstName: {
-//         type: String,
-//         required: false
-//     },
-//     lastName: {
-//         type: String,
-//         required: false
-//     },
-// })
-
 const attendeeSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
