@@ -44,8 +44,8 @@ const RSVPForm = () => {
         <div className='fullPage container mx-auto pt-5'>
             <div className='row justify-center'>
                 <div className="col-3 text-center" id="img-container">
-                    <img className="login-img custom-border" src="images/Photo1.png" alt="A couple getting married"/>
-                    <img className="login-img custom-border" src="images/Photo3.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="../images/Photo1.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="../images/Photo3.png" alt="A couple getting married"/>
                 </div>
                 <div className='col-5 var-bg-blue2 custom-border var-text-light'>
                     <div className='m-5'>
@@ -79,8 +79,8 @@ const RSVPForm = () => {
                     </div>
                 </div>
                 <div className="col-3 text-center" id="img-container">
-                    <img className="login-img custom-border" src="images/Photo6.png" alt="A couple getting married"/>
-                    <img className="login-img custom-border" src="images/Photo2.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="../images/Photo6.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="../images/Photo2.png" alt="A couple getting married"/>
                 </div>
             </div>
         </div>

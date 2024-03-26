@@ -21,6 +21,8 @@ export const QUERY_ME = gql`
         }
         attendees {
           _id
+          firstName
+          lastName
         }
       }
     }
@@ -43,6 +45,8 @@ export const QUERY_EVENTS = gql`
       }
       attendees {
         _id
+        firstName
+        lastName
       }
     }
   }
@@ -64,6 +68,8 @@ export const QUERY_SINGLE_EVENT = gql`
       }
       attendees {
         _id
+        firstName
+        lastName
       }
     }
   }
