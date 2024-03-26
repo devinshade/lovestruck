@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { RSVP_EVENT } from '../../utils/mutations';
 import Form from 'react-bootstrap/Form';
 
@@ -26,7 +26,7 @@ const RSVPForm = () => {
             const { data } = await rsvpEvent({
                 variables: {
                     eventId: eventId,
-                    mainAttendee: {
+                    attendee: {
                         firstName: rsvpState.firstName,
                         lastName: rsvpState.lastName
                     }
@@ -35,6 +35,7 @@ const RSVPForm = () => {
 
             window.location.href = "../events";
         } catch (err) {
+            console.error(err)
             throw new Error(err)
         }
     }
@@ -43,8 +44,8 @@ const RSVPForm = () => {
         <div className='fullPage container mx-auto pt-5'>
             <div className='row justify-center'>
                 <div className="col-3 text-center" id="img-container">
-                    <img className="login-img custom-border" src="/src/assets/images/Photo1.png" alt="A couple getting married"/>
-                    <img className="login-img custom-border" src="/src/assets/images/Photo3.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="images/Photo1.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="images/Photo3.png" alt="A couple getting married"/>
                 </div>
                 <div className='col-5 var-bg-blue2 custom-border var-text-light'>
                     <div className='m-5'>
@@ -78,8 +79,8 @@ const RSVPForm = () => {
                     </div>
                 </div>
                 <div className="col-3 text-center" id="img-container">
-                    <img className="login-img custom-border" src="/src/assets/images/Photo6.png" alt="A couple getting married"/>
-                    <img className="login-img custom-border" src="/src/assets/images/Photo2.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="images/Photo6.png" alt="A couple getting married"/>
+                    <img className="login-img custom-border" src="images/Photo2.png" alt="A couple getting married"/>
                 </div>
             </div>
         </div>

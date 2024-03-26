@@ -3,8 +3,7 @@ const { Schema, model } = mongoose;
 const Event = require('./Event')
 
 const attendeeSchema = new Schema({
-    userId:
-    {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: "User"
     },

@@ -4,7 +4,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
-            return User.findById(context.user._id)
+            return User.findById(context.user._id).populate('events')
         },
         user: async (parent, args, context) => {
             const user = await User.findById(context.user._id).populate('events')
@@ -37,9 +37,7 @@ const resolvers = {
         
             const totalAttendees = event.attendees.length;
             console.log("Total Attendees:", totalAttendees)
-            const plusOneCount = event.attendees.filter(attendee => attendee.plusOne).length;
-            console.log("plus ones:", plusOneCount)
-            const total = totalAttendees + plusOneCount;
+            const total = totalAttendees
         
             return total;
         },
@@ -102,31 +100,26 @@ const resolvers = {
                 { new: true });
             return updatedEvent;
         },
-        rsvpEvent: async (parent, { eventId, mainAttendee }, context) => {
-            const event = await Event.findOneAndUpdate(eventId);
+        rsvpEvent: async (parent, { eventId, attendee }, context) => {
+            const event = await Event.findById(eventId);
             
             if (!event) {
                 throw new Error("Event not found");
             }
-
-            const mainAttendeeRsvp = new Attendee({
-                userId: context.user._id,
-                firstName: mainAttendee.firstName,
-                lastName: mainAttendee.lastName,
-
-                // plusOne: plusOne ? {
-                //     firstName: plusOne.firstName,
-                //     lastName: plusOne.lastName,
-                // } : null
-            });
-            
-            event.attendees.push(mainAttendeeRsvp);
-
-            await event.save();
-
-            await User.findByIdAndUpdate(context.user._id, { $push: { events: eventId } })
         
-            return event;
+            const attendeeRsvp = await Attendee.create({
+                userId: context.user._id,
+                firstName: attendee.firstName,
+                lastName: attendee.lastName,
+            });
+        
+            event.attendees.push(attendeeRsvp._id);
+        
+            await event.save();
+        
+            await User.findByIdAndUpdate(context.user._id, { $push: { events: eventId } });
+        
+            return { event, message: "Success! See you there!" };
         },
         updateAttendee: async (parent, { eventId, attendeeId, name }) => {
             const event = await Event.findById(eventId);

@@ -13,9 +13,15 @@ export const QUERY_ME = gql`
         lastName
         title
         location
-        date
         description
+        date
         contactInfo
+        creator {
+          _id
+        }
+        attendees {
+          _id
+        }
       }
     }
   }
@@ -37,8 +43,6 @@ export const QUERY_EVENTS = gql`
       }
       attendees {
         _id
-        firstName
-        lastName
       }
     }
   }
@@ -60,8 +64,6 @@ export const QUERY_SINGLE_EVENT = gql`
       }
       attendees {
         _id
-        firstName
-        lastName
       }
     }
   }
@@ -74,10 +76,6 @@ export const NUMBER_OF_ATTENDEES = gql`
       _id
       firstName
       lastName
-      plusOne {
-        firstName
-        lastName
-      }
     }
    }
   }
