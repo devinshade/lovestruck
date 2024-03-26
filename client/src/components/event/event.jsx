@@ -30,12 +30,14 @@ const Event = ({ event }) => {
         }
     }
     
+    console.log(event)
+
     const userId = userData._id
 
     const handleRSVP = () => {
         window.location.href = `./rsvp/${event._id}`
     }
-
+    
     return (
         <div className='m-5 row'>
             <div className="custom-border var-bg-blue2 col-md-8 flex-wrap mx-auto d-flex p-4">
